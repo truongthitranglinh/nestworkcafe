@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NestWork - Hồ sơ của tôi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="chatbot.css">
+
+  <link rel="stylesheet" href="stylepro5KH.css" />
+</head>
+
+<body>
+
+  <main class="profile-page">
+    <div class="container">
+
+      <!-- CARD THÔNG TIN -->
+      <section class="card user-card">
+        <div class="user-left">
+          <div class="user-avatar">
+            <i class="fa-regular fa-user"></i>
+          </div>
+          <div class="user-info">
+            <h1>Linh</h1>
+            <p class="sub">Thành viên VIP • NestWork</p>
+
+            <div class="user-meta">
+              <div class="meta-item"><i class="fa-regular fa-envelope"></i> <span>kagurayato03110106@egmail.com</span></div>
+              <div class="meta-item"><i class="fa-solid fa-location-dot"></i> <span>Hà Nội, Việt Nam</span></div>
+            </div>
+
+            <div class="user-tag">Khách hàng thân thiết</div>
+          </div>
+        </div>
+
+        <div class="user-right">
+          <div class="meta-item"><i class="fa-solid fa-phone"></i> <span>0987 654 321</span></div>
+          <div class="meta-item"><i class="fa-regular fa-calendar"></i> <span>Tham gia: 05/2026</span></div>
+        </div>
+      </section>
+
+      <!-- 3 Ô THỐNG KÊ -->
+    <section class="user-stats">
+        <div class="stat-card stat-yellow">
+            <div class="stat-icon">
+            <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <div class="stat-text">
+            <div class="stat-title">Đơn hàng</div>
+            <div class="stat-value">24</div>
+            </div>
+        </div>
+
+        <div class="stat-card stat-dark">
+            <div class="stat-icon">
+            <i class="fa-regular fa-clock"></i>
+            </div>
+            <div class="stat-text">
+            <div class="stat-title">Giờ sử dụng</div>
+            <div class="stat-value">156h</div>
+            </div>
+        </div>
+
+        <div class="stat-card stat-gray">
+            <div class="stat-icon">
+            <i class="fa-solid fa-gift"></i>
+            </div>
+            <div class="stat-text">
+            <div class="stat-title">Điểm thưởng</div>
+            <div class="stat-value">1,250</div>
+            </div>
+        </div>
+    </section>
+
+
+      <!-- HOẠT ĐỘNG GẦN ĐÂY -->
+<section class="card">
+  <div class="card-header">
+    <h2>Hoạt động gần đây</h2>
+  </div>
+
+  <div class="activity-list">
+    <!-- JS sẽ render đơn vào đây -->
+    <div id="ordersList"></div>
+  </div>
+</section>
+
+
+      <!-- QUYỀN LỢI THÀNH VIÊN -->
+      <section class="benefits card benefits-card">
+        <div class="card-header">
+          <h2>Quyền lợi thành viên</h2>
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit-item"><span>✨</span> Giảm giá 10% cho tất cả dịch vụ</div>
+          <div class="benefit-item"><span>🎁</span> Tích điểm đổi quà hấp dẫn</div>
+          <div class="benefit-item"><span>☕</span> Miễn phí 1 ly cà phê mỗi tháng</div>
+          <div class="benefit-item"><span>⏱️</span> Ưu tiên đặt chỗ vào giờ cao điểm</div>
+          <div class="benefit-item"><span>🎉</span> Tham gia sự kiện dành riêng cho VIP</div>
+          <div class="benefit-item"><span>💳</span> Thanh toán linh hoạt, trả sau</div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+<script>
+  document.querySelectorAll(".act .act__head").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".act");
+
+      // chỉ mở 1 cái tại 1 thời điểm
+      document.querySelectorAll(".act.open").forEach(x => {
+        if (x !== item) x.classList.remove("open");
+      });
+
+      item.classList.toggle("open");
+    });
+  });
+</script>
+
+<script>
+  function getOrders(){
+    return JSON.parse(localStorage.getItem("orders") || "[]");
+  }
+
+  function badgeHTML(status){
+    if(status === "Chờ duyệt") return `<span class="badge badge--pending">Chờ duyệt</span>`;
+    if(status === "Hoàn thành") return `<span class="badge badge--done">Hoàn thành</span>`;
+    if(status === "Đã hủy") return `<span class="badge badge--cancel">Đã hủy</span>`;
+    return `<span class="badge">${status}</span>`;
+  }
+
+  function renderOrders(){
+    const box = document.getElementById("ordersList");
+    if(!box) return;
+
+      window.addEventListener("storage", (e) => {
+      if(e.key === "orders") renderOrders();
+    });
+
+    const orders = getOrders();
+
+    if(orders.length === 0){
+      box.innerHTML = "";
+      return;
+    }
+
+    
+
+    // ✅ gắn lại click mở/đóng cho các đơn mới render ra
+    document.querySelectorAll("#ordersList .act .act__head").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".act");
+        document.querySelectorAll(".act.open").forEach(x => {
+          if (x !== item) x.classList.remove("open");
+        });
+        item.classList.toggle("open");
+      });
+    });
+  }
+
+  
+</script>
+
+
+</script>
+<script>
+  function getOrders(){
+    try { return JSON.parse(localStorage.getItem("orders") || "[]"); }
+    catch(e){ return []; }
+  }
+  function saveOrders(arr){ localStorage.setItem("orders", JSON.stringify(arr)); }
+
+  function cancelOrder(code){
+    const orders = getOrders();
+    const idx = orders.findIndex(o => o.code === code);
+    if(idx === -1){
+      alert("Không tìm thấy đơn để hủy (thiếu mã đơn).");
+      return;
+    }
+    if(orders[idx].status !== "Chờ duyệt"){
+      alert("Chỉ hủy được đơn đang Chờ duyệt.");
+      return;
+    }
+
+    if(confirm("Bạn muốn hủy đơn này?")){
+      orders[idx].status = "Đã hủy";
+      saveOrders(orders);
+      renderOrders();
+    }
+  }
+
+  function renderOrders(){
+    const box = document.getElementById("ordersList");
+    if(!box) return;
+
+    const orders = getOrders();
+    if(orders.length === 0){
+      box.innerHTML = `<p style="color:#777;margin-top:10px;">Chưa có đơn nào.</p>`;
+      return;
+    }
+
+    box.innerHTML = orders.map(o => {
+      const status = o.status || "Chờ duyệt";
+      const code = o.code || "(Chưa có mã)";
+
+      return `
+        <div class="order-row">
+          <div class="order-left">
+            <div class="order-title">${o.type || "Đặt chỗ"} • <b>${code}</b></div>
+
+            <div class="order-sub">
+              ${o.date || "-"} • ${o.time || "-"} • ${o.duration || "-"} • ${o.people || "-"} người
+            </div>
+
+            <div class="order-sub">
+              ${o.name || "-"} • ${o.phone || "-"} • ${o.email || "-"}
+            </div>
+
+            ${status === "Chờ duyệt" && o.code ? `<button class="btn-cancel-order" data-code="${o.code}">Hủy đơn</button>` : ``}
+          </div>
+
+          <div class="order-right">
+            <span class="order-badge ${status === "Chờ duyệt" ? "pending" : (status === "Đã hủy" ? "cancel" : "done")}">
+              ${status}
+            </span>
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    box.querySelectorAll(".btn-cancel-order").forEach(btn => {
+      btn.addEventListener("click", () => cancelOrder(btn.dataset.code));
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", renderOrders);
+</script>
+
+
+<script>
+  function getOrders(){
+    try { return JSON.parse(localStorage.getItem("orders") || "[]"); }
+    catch(e){ return []; }
+  }
+  function saveOrders(arr){
+    localStorage.setItem("orders", JSON.stringify(arr));
+  }
+  function makeCode(){
+    const n = Math.floor(Math.random()*900000) + 100000;
+    return "NW-" + n;
+  }
+
+  document.getElementById("bookingForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const currentCustomer = JSON.parse(localStorage.getItem("currentCustomer") || "{}");
+  const order = {
+    id: Date.now(),
+    customerName: document.getElementById("bkName").value.trim(),
+    phone: document.getElementById("bkPhone").value.trim(),
+    date: document.getElementById("bkDate").value,
+    time: document.getElementById("bkTime").value,
+    people: document.getElementById("bkPeople").value,
+    area: document.getElementById("bkArea").value,
+    table: document.getElementById("bkTable").value,
+    note: document.getElementById("bkNote").value,
+    status: "Chờ duyệt",
+    cancelReason: "",
+
+    email: (currentCustomer.email || "").toLowerCase(),
+    createdAt: Date.now()
+  };
+
+ 
+
+  const orders = JSON.parse(localStorage.getItem("orders") || "[]");
+  orders.unshift(order);
+  localStorage.setItem("orders", JSON.stringify(orders));
+
+  alert("Đặt bàn thành công – vui lòng chờ duyệt");
+  this.reset();
+});
+
+
+</script>
+
+<script>
+(function(){
+  // ✅ bạn đang dùng isLogin="true"
+  const logged = localStorage.getItem("isLogin") === "true";
+  const role = localStorage.getItem("role");
+
+  if(!logged){
+    // chưa đăng nhập → về login cho đúng
+    localStorage.setItem("redirectAfterLogin", "pro5KH.html");
+    window.location.href = "login.html";
+    return;
+  }
+})();
+</script>
+
+<script src="chatbot.js" defer></script>
+
+</body>
+</html>
+
+
+

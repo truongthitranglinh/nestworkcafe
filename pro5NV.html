@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>NestWork - Hồ sơ nhân viên</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="stylepro5NV.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ===== HEADER ===== -->
+  <h1>Tài khoản của tôi</h1>
+  <p class="sub">Quản lý thông tin cá nhân và cài đặt tài khoản</p>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-banner"></div>
+
+    <div class="hero-body">
+      <div class="avatar-wrap">
+        <div class="avatar">
+            <img src="https://i.pinimg.com/736x/b8/89/78/b88978738e38abb5014ce80380ec89e6.jpg" alt="Avatar">
+            </div>
+        <button class="cam-btn"><i class="fa-solid fa-camera"></i></button>
+      </div>
+
+      <div class="hero-info">
+        <h2 class="hero-name" id="nvName">Trang Linh</h2>
+        <div class="hero-title" id="nvLevel">Senior Management</div>
+        <div class="hero-dept" id="nvDept">Chủ tịch</div>
+      </div>
+
+      <button class="edit-btn">
+        <i class="fa-regular fa-pen-to-square"></i>
+        Chỉnh sửa
+      </button>
+    </div>
+  </section>
+
+  <!-- ===== KPI ===== -->
+  <section class="kpi-grid">
+    <div class="kpi">
+      <div>
+        <div class="label">Ngày công tháng này</div>
+        <div class="value" id="kpiDays">28</div>
+      </div>
+      <div class="ico"><i class="fa-regular fa-calendar"></i></div>
+    </div>
+
+    <div class="kpi">
+      <div>
+        <div class="label">Tổng giờ làm</div>
+        <div class="value" id="kpiHours">266.5h</div>
+      </div>
+      <div class="ico"><i class="fa-regular fa-clock"></i></div>
+    </div>
+
+    <div class="kpi">
+      <div>
+        <div class="label">Trung bình/ngày</div>
+        <div class="value" id="kpiAvg">9.5h</div>
+      </div>
+      <div class="ico"><i class="fa-solid fa-chart-line"></i></div>
+    </div>
+
+    <div class="kpi">
+      <div>
+        <div class="label">Lương tháng này</div>
+        <div class="value" id="kpiSalary">8.0tr</div>
+      </div>
+      <div class="ico"><i class="fa-solid fa-dollar-sign"></i></div>
+    </div>
+  </section>
+
+  <!-- ===== TABS ===== -->
+  <nav class="tabs">
+    <button class="tab active" data-tab="info">Thông tin cá nhân</button>
+    <button class="tab" data-tab="history">Lịch sử chấm công</button>
+    <button class="tab" data-tab="security">Bảo mật</button>
+    <button class="tab" data-tab="settings">Cài đặt</button>
+  </nav>
+
+  <!-- ===== TAB CONTENT ===== -->
+  <section class="tab-content">
+
+    <!-- INFO -->
+    <div class="tab-page show" id="tab-info">
+      <div class="card">
+        <h3>Thông tin cá nhân</h3>
+
+        <div class="form-grid">
+          <div>
+            <label>Họ và tên</label>
+            <input value="Trang Linh">
+          </div>
+
+          <div>
+            <label>Email</label>
+            <input value="staff@nestwork.com">
+          </div>
+
+          <div>
+            <label>Số điện thoại</label>
+            <input value="0123456789">
+          </div>
+
+          <div>
+            <label>Ngày sinh</label>
+            <input value="17/11/2005">
+          </div>
+
+          <div class="full">
+            <label>Địa chỉ</label>
+            <input value="Hà Đông, Hà Nội">
+          </div>
+
+          <div class="full">
+            <label>CMND/CCCD</label>
+            <input value="01111111111">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HISTORY -->
+    <div class="tab-page" id="tab-history">
+      <div class="card">
+        <h3>Lịch sử chấm công</h3>
+        <div id="attendanceList" class="history-list">
+          <!-- JS render -->
+        </div>
+
+        <section class="panel">
+          <div class="att-history" id="myAttendance">
+    <!-- render bằng JS -->
+  </div>
+</section>
+
+      </div>
+    </div>
+
+    <!-- SECURITY -->
+    <div class="tab-page" id="tab-security">
+      <div class="card">
+        <h3>Bảo mật</h3>
+        <p>Đổi mật khẩu, xác thực tài khoản</p>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="tab-page" id="tab-settings">
+      <div class="card">
+        <h3>Cài đặt</h3>
+        <p>Ngôn ngữ, giao diện, thông báo</p>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+
+<script>
+/* TAB SWITCH */
+document.querySelectorAll(".tab").forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    document.querySelectorAll(".tab-page").forEach(p=>p.classList.remove("show"));
+    document.getElementById("tab-"+btn.dataset.tab).classList.add("show");
+  }
+});
+</script>
+
+<script>
+const ATT_KEY = "attendanceLogs";
+
+function getAttendance(){
+  try {
+    return JSON.parse(localStorage.getItem(ATT_KEY) || "[]");
+  } catch(e){
+    return [];
+  }
+}
+
+function getCurrentStaff(){
+  const raw = localStorage.getItem("currentStaff");
+  if(raw){
+    try { return JSON.parse(raw); } catch(e){}
+  }
+
+  const email = localStorage.getItem("currentUser");
+    const STAFF_MAP = {
+    "staff@nestwork.com": { name: "Trang Linh", code: "NV001" },
+  };
+
+  if(email && STAFF_MAP[email.toLowerCase()]){
+    return STAFF_MAP[email.toLowerCase()];
+  }
+
+  if(email){
+    return { name: email.split("@")[0], code: email };
+  }
+
+
+
+  return null;
+}
+
+const STAFF = getCurrentStaff();
+if(!STAFF){
+  alert("Vui lòng đăng nhập lại");
+  location.href = "login.html";
+}
+
+function pad2(n) { return String(n).padStart(2, "0"); }
+function nowStr(d = new Date()) {
+    return `${pad2(d.getDate())}/${pad2(d.getMonth() + 1)}/${d.getFullYear()}`;
+}
+
+function renderMyAttendance(){
+  const box = document.getElementById("myAttendance");
+  const allLogs = getAttendance();
+
+  const myLogs = allLogs
+    .filter(l => l.staffCode === STAFF.code)
+    .sort((a,b)=>b.createdAt - a.createdAt);
+
+  if(myLogs.length === 0){
+    box.innerHTML = "<div>Chưa có dữ liệu chấm công</div>";
+    return;
+  }
+
+  box.innerHTML = myLogs.map(log => {
+    const badgeClass = log.status === "Đi muộn" ? "late" : "ok";
+    const isDone = log.outTime;
+    const badgeText = isDone ? "Đã kết thúc" : log.status;
+
+    return `
+      <div class="att-item" data-id="${log.id}">
+        <div class="att-item-top">
+          <div class="att-name">${log.staffName}</div>
+          <span class="att-badge ${isDone ? 'done' : badgeClass}">${badgeText}</span>
+        </div>
+        <div class="att-sub">Mã NV: ${log.staffCode}</div>
+        <div class="att-meta">
+          <span><i class="fa-regular fa-calendar"></i> ${nowStr(new Date(log.createdAt))}</span>
+          <span><i class="fa-regular fa-clock" style="color:#22c55e"></i> Vào: ${log.inTime}</span>
+          ${log.outTime ? `<span><i class="fa-regular fa-clock" style="color:#ef4444"></i> Ra: ${log.outTime}</span>` : ''}
+        </div>
+      </div>
+    `;
+    }).join("");
+}
+
+renderMyAttendance();
+</script>
+
+
+</body>
+</html>

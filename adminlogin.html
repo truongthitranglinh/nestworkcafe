@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NestWork - Đăng nhập Admin</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./styleadminlogin.css">
+
+</head>
+<body>
+
+  <div class="overlay">
+    <section class="modal" role="dialog" aria-modal="true" aria-label="Đăng nhập Admin">
+
+      <a class="close" href="index.html" aria-label="Đóng">×</a>
+
+      <div class="brand">
+        <span class="brand-logo" aria-hidden="true">
+          <!-- đổi đúng logo của bạn -->
+          <img src="img/logo.jpg" alt="">
+        </span>
+        <span class="brand-name">NestWork</span>
+      </div>
+
+      <div class="pill">
+        <span class="pill-ic" aria-hidden="true">
+          <!-- shield -->
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2 20 6v7c0 5-3.5 9-8 9s-8-4-8-9V6l8-4Z"
+                  stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        QUẢN TRỊ VIÊN
+      </div>
+
+      <h1 class="title">Đăng nhập Admin</h1>
+      <p class="subtitle">Truy cập bảng điều khiển quản trị</p>
+
+      <form class="form" id="adminLoginForm">
+        <div class="field">
+          <label>Email quản trị viên</label>
+          <div class="input-wrap">
+            <span class="left-ic" aria-hidden="true">
+              <!-- mail -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <input type="email" id="adminEmail" placeholder="admin@nestwork.com" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Mật khẩu</label>
+          <div class="input-wrap">
+            <span class="left-ic" aria-hidden="true">
+              <!-- lock -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M6 11h12v9H6v-9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            </span>
+
+            <input id="adminPass" type="password" placeholder="••••••••" required>
+
+            <button class="eye" type="button" aria-label="Hiện/ẩn mật khẩu"
+              onclick="adminPass.type = adminPass.type==='password' ? 'text' : 'password'">
+              <!-- eye -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"
+                      stroke="currentColor" stroke-width="1.8"/>
+                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                      stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="forgot-row">
+          <a href="#" class="forgot">Quên mật khẩu?</a>
+        </div>
+
+        <button class="btn" type="submit">
+          <span class="btn-ic" aria-hidden="true">
+            <!-- shield -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2 20 6v7c0 5-3.5 9-8 9s-8-4-8-9V6l8-4Z"
+                    stroke="white" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          Đăng nhập quản trị
+        </button>
+
+        <div class="notice">
+          <div class="notice-ic" aria-hidden="true">
+            <!-- lock orange -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M6 11h12v9H6v-9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h4>Thông báo bảo mật</h4>
+            <p>
+              Trang đăng nhập này dành riêng cho quản trị viên hệ thống.
+              Mọi hoạt động đăng nhập đều được ghi lại và giám sát.
+            </p>
+          </div>
+        </div>
+
+        <p class="support">
+          Cần hỗ trợ? <a href="#" class="support-link">Liên hệ IT Support</a>
+        </p>
+      </form>
+
+    </section>
+  </div>
+
+  <!-- bubble ? -->
+  <a class="help" href="#" aria-label="Trợ giúp">?</a>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const adminLoginForm = document.getElementById("adminLoginForm");
+  const adminEmailInput = document.getElementById("adminEmail");
+  const adminPassInput = document.getElementById("adminPass");
+
+  if (adminLoginForm) {
+    adminLoginForm.addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const email = adminEmailInput.value;
+      const password = adminPassInput.value;
+
+      // Admin credentials check
+      if (email === "admin@nestwork.com" && password === "123456") {
+        // Store login status and role in localStorage
+        localStorage.setItem("isLogin", "true");
+        localStorage.setItem("role", "admin");
+        localStorage.setItem("currentUser", email); // Store email for consistency
+
+        // Redirect to admin dashboard
+        window.location.href = "admin.html";
+      } else {
+        alert("Email hoặc mật khẩu quản trị viên không chính xác!");
+        adminPassInput.value = ""; // Clear password field
+      }
+    });
+  }
+});
+</script>
+
+</body>
+</html>

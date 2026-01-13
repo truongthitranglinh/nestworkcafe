@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NestWork - Không gian làm việc & sáng tạo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body>
+
+<!-- PHẦN 1: HEADER - LOGO + MENU + ĐĂNG NHẬP / ĐĂNG KÝ -->
+    <header>
+        <!-- ===== LOGO ===== -->
+        <div class="container header-flex">
+            <div class="logo">
+                <img src="img/logo.jpg " alt="NestWork Logo">
+                <span>NestWork</span>
+            </div>
+
+             <!-- ===== MENU ĐIỀU HƯỚNG ===== -->
+            <nav>
+                <ul>
+                    <li><a href="#trangchu">Trang chủ</a></li>
+                    <li><a href="#vechungtoi">Về chúng tôi</a></li>
+                    <li><a href="#combo">Combo</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#lienhe">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <!-- ===== NÚT ĐĂNG NHẬP / ĐĂNG KÝ ===== -->
+           <div class="auth-buttons" id="authButtons">
+
+                <a href="login.html" class="btn-login">Đăng nhập</a>
+                <a href="signup.html" class="btn-signup">Đăng ký</a>
+                </div>
+
+               <div class="user-actions" id="userActions" style="display:none;">
+
+                    <button class="icon-btn" id="notifyBtn" aria-label="Thông báo">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="dot"></span>
+                    </button>
+
+                    <div class="profile-dropdown">
+
+                        <div class="dropdown-menu">
+                           <a href="pro5KH.html" id="myAccountBtn" class="dropdown-item">Tài khoản của tôi</a>
+                            <div class="dropdown-item danger" id="logoutBtn">Đăng xuất</div>
+                        </div>
+                        
+                        <div class="avatar-wrap">
+                        <img src="https://i.pinimg.com/736x/f8/69/07/f86907ea5b4a0d17f75d050d9f339ae0.jpg" class="avatar" alt="Avatar thỏ">
+                        </div>
+
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- PHẦN 2: BANNER TRANG CHỦ -->
+    <section class="hero" id="trangchu">
+
+        <div class="hero-content">
+            <h1>Chào mừng đến với <span>NestWork</span></h1>
+            <p class="sub-title">Không gian làm việc, học tập và sáng tạo</p>
+            <p>Kết hợp không gian hoàn hảo cho việc học tập và làm việc, cùng cà phê thơm ngon</p>
+           <a href="#dat-cho" class="btn-booking-large require-login" data-target="#dat-cho"> Đặt chỗ ngay →</a>
+
+        </div>
+    </a>
+
+    </section>
+
+    <!-- PHẦN 3: GIỚI THIỆU VỀ NESTWORK -->
+    <section class="about container" id="vechungtoi">
+        
+        <div class="about-text">
+            <h2>Về <span>NestWork</span></h2>
+                <div class="about-text">
+                    <p>NestWork không chỉ là một quán cà phê thông thường. Chúng tôi tạo ra một không gian học tập và làm việc hiện đại, nơi sự tập trung, sáng tạo và cảm hứng luôn được đặt lên hàng đầu. Tại đây, mỗi góc nhỏ đều được thiết kế để giúp bạn làm việc hiệu quả hơn, học tập tốt hơn và tận hưởng trọn vẹn khoảng thời gian của mình.</p>
+                </div>
+
+        </div>
+
+        <div class="about-image">
+            <img src="img/khongian.jpg" alt="Không gian NestWork">
+        </div>
+
+    </section>
+
+    <!-- PHẦN 4: TÍNH NĂNG / ƯU ĐIỂM NỔI BẬT -->
+    <section class="features container">
+
+        <div class="section-title">
+            <h2>Tính Năng <span>Nổi Bật</span></h2>
+        </div>
+
+         <!-- ===== LƯỚI DANH SÁCH TÍNH NĂNG ===== -->
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <div class="icon-box yellow"><i class="fas fa-wifi"></i></div>
+                <h3>WiFi Tốc Độ Cao</h3>
+                <p>Internet ổn định cho học tập và làm việc online.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-box dark"><i class="fas fa-bolt"></i></div>
+                <h3>Ổ Cắm Điện Đầy Đủ</h3>
+                <p>Mỗi bàn đều có ổ cắm riêng tiện lợi.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-box yellow"><i class="fas fa-volume-mute"></i></div>
+                <h3>Yên Tĩnh</h3>
+                <p>Môi trường học tập tập trung cao độ.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-box dark"><i class="fas fa-users"></i></div>
+                <h3>Phòng Họp Nhóm</h3>
+                <p>Các phòng họp riêng biệt, hiện đại.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-box yellow"><i class="fas fa-mug-hot"></i></div>
+                <h3>Đồ Uống Đa Dạng</h3>
+                <p>Menu phong phú, giá cả hợp lý.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-box dark"><i class="fas fa-clock"></i></div>
+                <h3>8AM - 11PM</h3>
+                <p>Thời gian mở cửa linh hoạt mỗi ngày.</p>
+            </div>
+
+        </div>
+
+    </section>
+    
+    <!-- PHẦN 5: MENU ĐỒ UỐNG -->
+    <section class="menu container" id="menu">
+
+        <div class="section-title">
+            <h2>Menu <span>NestWork</span></h2>
+        </div>
+
+        <div class="menu-wrapper">
+            <!-- --- CỘT TRÁI: CÀ PHÊ --- -->
+            <div class="menu-column">
+                <div class="menu-category">
+                    <h3><i class="fas fa-coffee"></i> Cà phê</h3>
+                    <ul>
+                        <li><span>Cà phê muối</span> <span>15k</span></li>
+                        <li><span>Cappuccino</span> <span>25k</span></li>
+                        <li><span>Cà phê sữa</span> <span>15k</span></li>
+                        <li><span>Cà phê đen</span> <span>15k</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="menu-divider"></div>
+
+            <!-- --- CỘT PHẢI: TRÀ & SODA --- -->
+            <div class="menu-column">
+                <div class="menu-category">
+                    <h3><i class="fas fa-leaf"></i> Trà & Soda</h3>
+                    <ul>
+                        <li><span>Trà trái cây</span> <span>25k-40k</span></li>
+                        <li><span>Soda bạc hà</span> <span>20k</span></li>
+                        <li><span>Trà sữa việt quất</span> <span>25k-35k</span></li>
+                        <li><span>Trà sữa vị dâu</span> <span>25k-35k</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+    <!-- PHẦN 6: COMBO / GÓI DỊCH VỤ -->
+    <section class="combo-special container" id="combo">
+
+        <div class="section-title">
+            <h2>Combo <span>Đặc Biệt</span></h2>
+            <p>Các gói combo tiết kiệm và tiện lợi cho mọi nhu cầu</p>
+        </div>
+
+        <div class="combo-grid">
+            <!-- --- COMBO 1: HỌC TẬP CÁ NHÂN --- -->
+            <div class="combo-card">
+                <div class="combo-header">
+                    <h3>Combo Học Tập Cá Nhân</h3>
+                    <div class="price">45k<span>/ 2 giờ</span></div>
+                    <p class="combo-tip"> Lý tưởng cho sinh viên ôn thi</p>
+                </div>
+
+                <ul class="combo-features">
+                    <li><i class="fas fa-check"></i> 1 đồ uống tự chọn</li>
+                    <li><i class="fas fa-check"></i> Bàn học yên tĩnh</li>
+                    <li><i class="fas fa-check"></i> WiFi/Ổ cắm điện</li>
+                </ul>
+                <a href="#" class="btn-combo">Đặt Combo Ngay</a>
+            </div>
+            <!-- --- COMBO 2: LÀM VIỆC CẢ NGÀY --- -->
+            <div class="combo-card featured">
+                <div class="badge"> Phổ Biến Nhất</div>
+                <div class="combo-header">
+                    <h3>Combo Học Tập Cả Ngày</h3>
+                    <div class="price">120k<span>/ 8AM-11PM</span></div>
+                    <p class="combo-tip"> Hoàn hảo làm việc cả ngày</p>
+                </div>
+                <ul class="combo-features">
+                    <li><i class="fas fa-check"></i> 2 đồ uống bất kỳ</li>
+                    <li><i class="fas fa-check"></i> Không giới hạn thời gian</li>
+                    <li><i class="fas fa-check"></i> Miễn phí bánh snack</li>
+                </ul>
+                <a href="#" class="btn-combo">Đặt Combo Ngay</a>
+            </div>
+
+            <!-- --- COMBO 3: NHÓM / TEAM --- -->
+            <div class="combo-card">
+                <div class="combo-header">
+                    <h3>Combo Làm Việc Nhóm Nhỏ</h3>
+                    <div class="price">180k<span>/ 3 giờ</span></div>
+                    <p class="combo-tip"> Cho nhóm 4-6 người</p>
+                </div>
+                <ul class="combo-features">
+                    <li><i class="fas fa-check"></i> Phòng riêng cách âm</li>
+                    <li><i class="fas fa-check"></i> 3 đồ uống miễn phí</li>
+                    <li><i class="fas fa-check"></i> Bảng viết/TV</li>
+                </ul>
+                <a href="#" class="btn-combo">Đặt Combo Ngay</a>
+            </div>
+
+            <!-- --- COMBO 4: COMBO LÀM VIEC NHÓM LỚN --- -->
+            <div class="combo-card">
+                <div class="combo-header">
+                    <h3>Combo Làm Việc Nhóm Lớn</h3>
+                    <div class="price">280k<span>/ 3 giờ</span></div>
+                    <p class="combo-tip">💡 Cho meeting, workshop</p>
+                </div>
+                <ul class="combo-features">
+                    <li><i class="fas fa-check"></i> Phòng 8-12 người</li>
+                    <li><i class="fas fa-check"></i> 5 đồ uống + snack</li>
+                    <li><i class="fas fa-check"></i> Máy chiếu chuyên nghiệp</li>
+                </ul>
+                <a href="#" class="btn-combo">Đặt Combo Ngay</a>
+            </div>
+
+            <!-- --- COMBO 5: COMBO CAFE & CHILL --- -->
+            <div class="combo-card">
+                <div class="combo-header">
+                    <h3>Combo Cafe & Chill</h3>
+                    <div class="price">65k<span>/ Không giới hạn</span></div>
+                    <p class="combo-tip">💡 Hẹn hò, thư giãn</p>
+                </div>
+                <ul class="combo-features">
+                    <li><i class="fas fa-check"></i> 2 đồ uống tự chọn</li>
+                    <li><i class="fas fa-check"></i> Nhạc nền êm dịu</li>
+                    <li><i class="fas fa-check"></i> Không gian social</li>
+                </ul>
+                <a href="#" class="btn-combo">Đặt Combo Ngay</a>
+            </div>
+
+            <!-- --- COMBO 6: COMBO WEEKEND SPECIAL  --- -->
+            <div class="combo-card">
+                <div class="combo-header">
+                    <h3>Combo Weekend Special</h3>
+                    <div class="price">99k<span>/ 4 giờ</span></div>
+                    <p class="combo-tip">💡 Cuối tuần thư giãn</p>
+                </div>
+                <ul class="combo-features">
+                    <li><i class="fas fa-check"></i> 2 đồ uống cao cấp</li>
+                    <li><i class="fas fa-check"></i> 1 món ăn nhẹ + Bánh</li>
+                    <li><i class="fas fa-check"></i> View đẹp, chụp ảnh free</li>
+                </ul>
+                <a href="#" class="btn-combo">Đặt Combo Ngay</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ƯU đãi đặc biệt -->
+<section class="special-offers container">
+    <div class="offer-container">
+        <div class="offer-header">
+            <i class="fas fa-gift"></i>
+            <h2>Ưu đãi đặc biệt</h2>
+        </div>
+        <ul class="offer-list">
+            <li>
+                <i class="fas fa-check-circle"></i>
+                <span>Mua 5 combo tặng 1 combo cùng loại</span>
+            </li>
+            <li>
+                <i class="fas fa-check-circle"></i>
+                <span>Mua 5 combo tặng 1 combo cùng loại (áp dụng tích điểm)</span>
+            </li>
+            <li>
+                <i class="fas fa-check-circle"></i>
+                <span>Sinh viên giảm thêm 10% khi mua combo học tập</span>
+            </li>
+            <li>
+                <i class="fas fa-check-circle"></i>
+                <span>Đặt trước online giảm 5% tất cả combo</span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+    <!-- Phần: CATALOG / TRƯNG BÀY KHÔNG GIAN & ĐỒ UỐNG -->
+    <section class="catalog-showcase container">
+
+        <div class="section-title">
+            <h2>Chi Tiết <span>Không Gian & Đồ Uống</span></h2>
+        </div>
+
+        <div class="showcase-grid">
+
+            <div class="showcase-item">
+                <img src="img/caphemuoi.jpg" alt="Cà phê muối">
+                <div class="showcase-overlay"><h4>Cà Phê Muối</h4></div>
+            </div>
+
+            <div class="showcase-item">
+                <img src="img/sodabacha.jpg" alt="Soda Bạc Hà">
+                <div class="showcase-overlay"><h4>Soda Bạc Hà</h4></div>
+            </div>
+
+            <div class="showcase-item">
+                <img src="img/phongdon.jpg" alt="Phòng đơn">
+                <div class="showcase-overlay"><h4>Phòng Đơn</h4></div>
+            </div>
+
+            <div class="showcase-item">
+                <img src="img/phonghoplon.jpg" alt="Phòng họp">
+                <div class="showcase-overlay"><h4>Phòng Họp Lớn</h4></div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+        <!-- SECTION: BẢNG GIÁ DỊCH VỤ -->
+    <section class="pricing container">
+
+        <div class="section-title">
+            <h2>Bảng Giá <span>Dịch Vụ</span></h2>
+            <p>Lựa chọn gói dịch vụ phù hợp với nhu cầu học tập và làm việc của bạn</p>
+        </div>
+
+         <!-- Lưới hiển thị các gói giá -->
+        <div class="pricing-grid">
+
+            <!-- GÓI 1: CÁ NHÂN (THEO GIỜ) -->
+            <div class="price-card">
+                <div class="price-header">
+                    <h3>Gói Cá Nhân</h3>
+                    <h4>Theo Giờ</h4>
+                    <p>Linh hoạt cho nhu cầu ngắn hạn</p>
+                    <div class="amount">25-40k<span>/giờ</span></div>
+                </div>
+                <ul class="price-features">
+                    <li><i class="fas fa-wifi"></i> WiFi tốc độ cao</li>
+                    <li><i class="fas fa-bolt"></i> Ổ cắm điện tại bàn</li>
+                    <li><i class="fas fa-volume-mute"></i> Không gian yên tĩnh</li>
+                    <li><i class="fas fa-mug-hot"></i> Đồ uống tự chọn (giá menu)</li>
+                    <li><i class="fas fa-info-circle"></i> Giá tùy vị trí ngồi</li>
+                </ul>
+                <a href="#" class="btn-price">Đặt Ngay</a>
+            </div>
+
+            <!-- GÓI 2: Ngày -->
+            <div class="price-card">
+                <div class="price-header">
+                    <h3>Gói Ngày</h3>
+                    <p>Lý tưởng cho ngày làm việc dài</p>
+                    <div class="amount">120k<span>/ngày</span></div>
+                </div>
+                <ul class="price-features">
+                    <li><i class="fas fa-clock"></i> Không giới hạn (8AM-11PM)</li>
+                    <li><i class="fas fa-wifi"></i> WiFi không giới hạn</li>
+                    <li><i class="fas fa-bolt"></i> Ổ cắm điện tại bàn</li>
+                    <li><i class="fas fa-check"></i> 1 đồ uống miễn phí</li>
+                    <li><i class="fas fa-star"></i> Ưu tiên chọn chỗ</li>
+                </ul>
+                <a href="#" class="btn-price">Đặt Ngay</a>
+            </div>
+
+            <!-- GÓI 3: Tháng (PHỔ BIẾN NHẤT) -->
+            <div class="price-card featured">
+                <div class="badge-featured">Phổ Biến Nhất</div>
+                <div class="price-header">
+                    <h3>Gói Tháng</h3>
+                    <p>Tiết kiệm nhất cho dân văn phòng</p>
+                    <div class="amount">900k<span>/tháng</span></div>
+                </div>
+                <ul class="price-features">
+                    <li><i class="fas fa-plus"></i> Tất cả ưu đãi gói ngày</li>
+                    <li><i class="fas fa-chair"></i> Ưu tiên chọn chỗ</li>
+                    <li><i class="fas fa-mug-hot"></i> Miễn phí 4 đồ uống/tháng</li>
+                    <li><i class="fas fa-handshake"></i> Phòng họp (2h/tuần)</li>
+                    <li><i class="fas fa-percentage"></i> Giảm 10% menu đồ uống</li>
+                    <li><i class="fas fa-key"></i> Tủ khóa cá nhân</li>
+                </ul>
+                <a href="#" class="btn-price">Đặt Ngay</a>
+            </div>
+
+            <!-- GÓI 4: 20 GIỜ -->
+            <div class="price-card">
+                <div class="price-header">
+                    <h3>Gói 20 Giờ</h3>
+                    <p>Sử dụng linh hoạt trong tháng</p>
+                    <div class="amount">450k<span>/20 giờ</span></div>
+                </div>
+                <ul class="price-features">
+                    <li><i class="fas fa-calendar-alt"></i> Sử dụng trong 30 ngày</li>
+                    <li><i class="fas fa-wifi"></i> WiFi tốc độ cao</li>
+                    <li><i class="fas fa-bolt"></i> Ổ cắm điện đầy đủ</li>
+                    <li><i class="fas fa-percentage"></i> Giảm 10% đồ uống</li>
+                    <li><i class="fas fa-exchange-alt"></i> Chuyển nhượng được</li>
+                </ul>
+                <a href="#" class="btn-price">Đặt Ngay</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--SECTION: PHÒNG HỌP NHÓM -->
+    <section class="meeting-rooms container">
+
+        <div class="section-title">
+            <h2>Phòng Họp <span>Nhóm</span></h2>
+            <p>Không gian chuyên nghiệp, đầy đủ tiện nghi cho các buổi thảo luận và workshop</p>
+        </div>
+
+        <div class="rooms-grid">
+            <!-- PHÒNG 1: PHÒNG NHÓM NHỎ -->
+            <div class="room-card">
+
+                <div class="room-image">
+                    <img src="img/phongnhomnho.jpg" alt="Phòng nhóm nhỏ">
+                    <span class="capacity">Sức chứa: 4-6 người</span>
+                </div>
+
+                <div class="room-info">
+                    <h3>Phòng Nhóm Nhỏ</h3>
+                    <div class="room-price">80k<span>/giờ</span></div>
+                    <ul class="room-features">
+                        <li><i class="fas fa-chalkboard"></i> Bảng viết/Flipchart</li>
+                        <li><i class="fas fa-tv"></i> TV màn hình lớn</li>
+                        <li><i class="fas fa-mug-hot"></i> 1 đồ uống miễn phí</li>
+                        <li><i class="fas fa-wind"></i> Điều hòa, ánh sáng tốt</li>
+                        <li><i class="fas fa-volume-mute"></i> Cách âm tốt</li>
+                    </ul>
+                    <a href="#" class="btn-room">Đặt Phòng</a>
+                </div>
+            </div>
+
+            <!-- PHÒNG 2: PHÒNG HỌP LỚN -->
+            <div class="room-card">
+                <div class="room-image">
+                    <img src="img/phonghoplon.jpg" alt="Phòng họp lớn">
+                    <span class="capacity">Sức chứa: 8-12 người</span>
+                </div>
+                <div class="room-info">
+                    <h3>Phòng Họp Lớn</h3>
+                    <div class="room-price">100k<span>/giờ</span></div>
+                    <ul class="room-features">
+                        <li><i class="fas fa-chalkboard"></i> Bảng viết/Flipchart</li>
+                        <li><i class="fas fa-video"></i> Máy chiếu + màn hình</li>
+                        <li><i class="fas fa-coffee"></i> 2 đồ uống miễn phí</li>
+                        <li><i class="fas fa-volume-up"></i> Hệ thống âm thanh</li>
+                        <li><i class="fas fa-snowflake"></i> Điều hòa 2 chiều</li>
+                        <li><i class="fas fa-chair"></i> Bàn ghế cao cấp</li>
+                    </ul>
+                    <a href="#" class="btn-room">Đặt Phòng</a>
+                </div>
+            </div>
+
+        </div>
+        
+    </section>
+
+    <!--SECTION: CHỐT -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>"Nơi khởi nguồn của những ý tưởng lớn và sự tập trung tuyệt đối"</h2>
+                <p>Hãy đến với NestWork để trải nghiệm không gian học tập và làm việc chuẩn gu của bạn.</p>
+                <div class="cta-buttons">
+                    <a href="tel:0123456789" class="btn-cta-phone"><i class="fas fa-phone"></i> Gọi ngay: 0123 456 789</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+<!-- Không gian học tập -->
+<section class="study-space container">
+    <!-- Tiêu đề khu vực -->
+        <div class="section-title">
+            <h2>Không Gian <span>Học Tập</span></h2>
+            <p>Đa dạng không gian được thiết kế riêng biệt để đáp ứng mọi nhu cầu học tập và làm việc của bạn</p>
+        </div>
+
+        <!-- ===== CARD 1: Khu học đơn ===== -->
+        <div class="space-grid-v2">
+            <div class="space-card-v2">
+                <div class="space-icon-top"><i class="fas fa-user"></i></div>
+                <h3>Khu Học Đơn</h3>
+                <p>Ghế đơn thoải mái với bàn riêng, lý tưởng cho việc tập trung cao độ</p>
+                <div class="space-tags">
+                    <span><i class="fas fa-chair"></i> Ghế êm ái</span>
+                    <span><i class="fas fa-table"></i> Bàn rộng rãi</span>
+                    <span><i class="fas fa-lightbulb"></i> Đèn đọc sách</span>
+                    <span><i class="fas fa-plug"></i> Ổ cắm điện</span>
+                </div>
+            </div>
+
+            <!-- ===== CARD 2: Phòng học nhỏ ===== -->
+            <div class="space-card-v2">
+                <div class="space-icon-top"><i class="fas fa-users"></i></div>
+                <h3>Phòng Học Nhỏ</h3>
+                <p>Không gian riêng tư cho 4-8 người, phù hợp cho học nhóm và họp dự án</p>
+                <div class="space-tags">
+                    <span><i class="fas fa-chalkboard"></i> Bảng trắng</span>
+                    <span><i class="fas fa-tv"></i> Màn hình TV</span>
+                    <span><i class="fas fa-wind"></i> Điều hòa riêng</span>
+                    <span><i class="fas fa-volume-mute"></i> Cách âm tốt</span>
+                </div>
+            </div>
+
+            <!-- ===== CARD 3: Phòng Họp Lớn ===== -->
+            <div class="space-card-v2">
+                <div class="space-icon-top"><i class="fas fa-comment-slash"></i></div>
+                <h3>Phòng Họp Lớn</h3>
+                <p>Không gian rộng rãi, phù hợp cho các buổi họp, hội thảo và sự kiện đông người.</p>
+                <div class="space-tags">
+                     <span><i class="fas fa-wind"></i> Điều hòa riêng</span>
+                    <span><i class="fas fa-tv"></i> Màn hình TV</span>
+                    <span><i class="fas fa-door-closed"></i> Không gian riêng tư</span>
+                    <span><i class="fas fa-chair"></i> Bàn ghế số lượng lớn </span>
+                </div>
+            </div>
+
+            <!-- ===== CARD 4: Phòng máy tính ===== -->
+            <div class="space-card-v2">
+                <div class="space-icon-top"><i class="fas fa-laptop"></i></div>
+                <h3>Phòng máy tính</h3>
+                <p>Không gian thoáng đãng với thiết kế nhẹ nhàng, cùng trang thiết bị hiện đại hỗ trợ người học</p>
+                <div class="space-tags">
+                    <span><i class="fas fa-paint-laptop"></i> Trang bị hiện đại</span>
+                    <span><i class="fas fa-cloud-sun"></i> Ánh sáng tự nhiên</span>
+                    <span><i class="fas fa-volume-off"></i> Hạn chế tiếng ồn</span>
+                    <span><i class="fas fa-door-closed"></i> Không gian riêng tư</span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="small-study-room container">
+    <div class="room-content-wrapper">
+        <div class="room-images">
+            <div class="image-large">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600" alt="Phòng học nhỏ view 1">
+            </div>
+            <div class="image-offset">
+                <img src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?q=80&w=400" alt="Phòng học nhỏ view 2">
+            </div>
+        </div>
+
+        <div class="room-text">
+            <h2>Phòng học nhỏ</h2>
+            <p class="description">
+                Phòng học nhỏ tại quán được thiết kế dành riêng cho những bạn cần không gian yên tĩnh để làm bài tập nhóm nhỏ hoặc họp nhanh.
+            </p>
+            
+            <div class="suitable-for">
+                <h3>Phù hợp cho:</h3>
+                <ul>
+                    <li><i class="fas fa-circle"></i> Nhóm 2-4 người</li>
+                    <li><i class="fas fa-circle"></i> Họp online, thuyết trình nhỏ</li>
+                    <li><i class="fas fa-circle"></i> Ôn thi, làm báo cáo, làm đồ án</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<section class="large-meeting-room container">
+    <div class="room-content-wrapper reverse">
+        <div class="room-text">
+            <h2>Phòng họp lớn</h2>
+            <p class="description">
+                Phòng họp được thiết kế dành riêng cho những buổi làm việc nghiêm túc, thảo luận nhóm, họp dự án hoặc thuyết trình — nơi mọi người có thể trao đổi thoải mái nhưng vẫn giữ được sự yên tĩnh, chuyên nghiệp.
+            </p>
+            <p class="sub-description">
+                Không gian kín, cách âm tốt, ánh sáng đủ — giúp bạn tập trung hơn và tự tin hơn trong từng buổi họp.
+            </p>
+            
+            <div class="suitable-for">
+                <h3>Phù hợp cho:</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Họp nhóm - làm dự án</li>
+                    <li><i class="fas fa-check"></i> Học nhóm - thảo luận bài</li>
+                    <li><i class="fas fa-check"></i> Họp công việc nhỏ</li>
+                    <li><i class="fas fa-check"></i> Thuyết trình - brainstorming</li>
+                    <li><i class="fas fa-check"></i> Tutor - dạy kèm - workshop mini</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="room-images">
+            <div class="image-large">
+                <img src="https://i.pinimg.com/736x/fd/e4/06/fde4065114a316f5021d43716ff7e72b.jpg" alt="Phòng họp lớn chuyên nghiệp">
+            </div>
+            <div class="image-badge">
+                <span>Sức chứa lên đến 12 người</span>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="image-gallery container">
+    <div class="section-title">
+        <h2>Thư Viện <span>Hình Ảnh</span></h2>
+        <p>Khám phá không gian làm việc và học tập ấm cúng, hiện đại tại NestWork</p>
+    </div>
+
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800" alt="Không gian học tập">
+            <div class="gallery-overlay">
+                <h3>Không gian học tập</h3>
+                <p>Môi trường yên tĩnh, tập trung</p>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://i.pinimg.com/1200x/16/3e/57/163e57a41cadf5f282d7e43b9943843b.jpg" alt="Bàn làm việc hiện đại">
+            <div class="gallery-overlay">
+                <h3>Bàn làm việc hiện đại</h3>
+                <p>Đầy đủ tiện nghi, ổ cắm điện</p>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://i.pinimg.com/736x/d6/9f/8e/d69f8e59b42eeb72433cdd43d92ac301.jpg" alt="Nội thất ấm cúng">
+            <div class="gallery-overlay">
+                <h3>Nội thất ấm cúng</h3>
+                <p>Thiết kế tinh tế, sang trọng</p>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://i.pinimg.com/1200x/45/86/89/4586892bb64d481a27a5e3e6b6f8d470.jpg" alt="Không khí cafe">
+            <div class="gallery-overlay">
+                <h3>Không khí cafe</h3>
+                <p>Thư giãn và sáng tạo</p>
+            </div>
+        </div>
+
+        <div class="gallery-item large">
+            <img src="https://i.pinimg.com/1200x/52/ba/e4/52bae4920b6080545da56ef6b7c7ed3e.jpg" alt="Phòng học nhóm">
+            <div class="gallery-overlay">
+                <h3>Phòng học nhóm</h3>
+                <p>Làm việc team hiệu quả</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!--SECTION: Đánh giá -->
+<section class="testimonials container">
+
+    <div class="section-title">
+        <h2>Khách Hàng <span>Nói Gì</span></h2>
+        <p>Hàng trăm khách hàng đã tin tưởng và lựa chọn NestWork làm không gian học tập và làm việc</p>
+    </div>
+
+    <div class="testimonials-grid">
+        <div class="testi-card">
+            <div class="testi-header">
+                <img src="https://i.pravatar.cc/150?u=1" alt="Nguyễn Minh Anh">
+                <div class="testi-info">
+                    <h3>Nguyễn Minh Anh</h3>
+                    <span>Sinh viên năm 3 - ĐH Bách Khoa</span>
+                </div>
+                <i class="fas fa-quote-right quote-icon"></i>
+            </div>
+            <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p>"NestWork là nơi lý tưởng để mình học tập. Không gian yên tĩnh, WiFi nhanh, đồ uống ngon. Mình đã hoàn thành được nhiều đồ án quan trọng ở đây!"</p>
+        </div>
+
+        <div class="testi-card">
+
+            <div class="testi-header">
+                <img src="https://i.pravatar.cc/150?u=2" alt="Trần Văn Bình">
+                <div class="testi-info">
+                    <h3>Trần Văn Bình</h3>
+                    <span>Freelancer - Designer</span>
+                </div>
+                <i class="fas fa-quote-right quote-icon"></i>
+            </div>
+
+            <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p>"Không gian làm việc chuyên nghiệp, giá cả hợp lý. Phòng họp nhóm rất tiện cho các buổi brainstorm với team. Rất recommend!"</p>
+        </div>
+
+        <div class="testi-card">
+            <div class="testi-header">
+                <img src="https://i.pravatar.cc/150?u=3" alt="Lê Thị Cẩm Ly">
+                <div class="testi-info">
+                    <h3>Lê Thị Cẩm Ly</h3>
+                    <span>Nhân viên văn phòng</span>
+                </div>
+                <i class="fas fa-quote-right quote-icon"></i>
+            </div>
+
+            <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p>"Mình thường đến NestWork vào cuối tuần để làm việc. Không khí rất tập trung, cà phê ngon, nhân viên thân thiện. 10/10!"</p>
+        </div>
+
+        <div class="testi-card">
+            <div class="testi-header">
+                <img src="https://i.pravatar.cc/150?u=4" alt="Phạm Quốc Đạt">
+                <div class="testi-info">
+                    <h3>Phạm Quốc Đạt</h3>
+                    <span>Học sinh lớp 12</span>
+                </div>
+                <i class="fas fa-quote-right quote-icon"></i>
+            </div>
+
+            <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p>"Đang ôn thi đại học, mình cần một nơi yên tĩnh để tập trung. NestWork đáp ứng hoàn hảo! Gói tháng rất tiết kiệm."</p>
+        </div>
+
+        <div class="testi-card">
+            <div class="testi-header">
+                <img src="https://i.pravatar.cc/150?u=5" alt="Hoàng Thu Hà">
+                <div class="testi-info">
+                    <h3>Hoàng Thu Hà</h3>
+                    <span>Content Creator</span>
+                </div>
+                <i class="fas fa-quote-right quote-icon"></i>
+            </div>
+
+            <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p>"Không gian đẹp, ánh sáng tự nhiên, rất phù hợp để quay content. Cà phê muối ở đây là đặc sản phải thử!"</p>
+        </div>
+
+        <div class="testi-card">
+            <div class="testi-header">
+                <img src="https://i.pravatar.cc/150?u=6" alt="Võ Minh Tuấn">
+                <div class="testi-info">
+                    <h3>Võ Minh Tuấn</h3>
+                    <span>Lập trình viên</span>
+                </div>
+                <i class="fas fa-quote-right quote-icon"></i>
+            </div>
+
+            <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p>"WiFi ổn định, không gian thoáng mát, ổ cắm đầy đủ. Chính là thiên đường cho dân code như mình. Sẽ quay lại nhiều lần!"</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!--SECTION Đặt chỗ online-->
+<section class="booking-online container" id="dat-cho">
+    <div class="section-title">
+        <h2>Đặt Chỗ <span>Trực Tuyến</span></h2>
+        <p>Đặt chỗ ngay để đảm bảo có không gian học tập và làm việc lý tưởng</p>
+    </div>
+
+    <form class="booking-form" id="bookingForm">
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Họ và tên *</label>
+                <input id="bkName" type="text" placeholder="Nguyễn Văn A" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Email *</label>
+                <input id="bkEmail" type="email" placeholder="email@example.com" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label><i class="fas fa-phone"></i> Số điện thoại *</label>
+                <input id="bkPhone" type="tel" placeholder="0123456789" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-calendar-alt"></i> Ngày *</label>
+                <input id="bkDate" type="date" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-clock"></i> Giờ *</label>
+                <input id="bkTime" type="time" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-hourglass-half"></i> Thời gian sử dụng *</label>
+                <select id="bkDuration" required>
+                    <option value="1">1 giờ</option>
+                    <option value="2">2 giờ</option>
+                    <option value="3">3 giờ</option>
+                    <option value="4">4 giờ</option>
+                    <option value="half">Nửa ngày (4-6 giờ)</option>
+                    <option value="full">Cả ngày (8-10 giờ)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-users"></i> Số người *</label>
+                <select id="bkPeople" required>
+                    <option value="1">1 người</option>
+                    <option value="2">2 người</option>
+                    <option value="3-5">3-5 người</option>
+                    <option value="6-10">6-10 người</option>
+                    <option value="10+">Trên 10 người</option>
+                </select>
+            </div>
+
+            <!-- ✅ FIX: THÊM ID -->
+            <div class="form-group full-width">
+                <label><i class="fas fa-couch"></i> Loại không gian *</label>
+                <select id="bkSpaceType" required>
+                    <option value="Bàn làm việc cá nhân">Bàn làm việc cá nhân</option>
+                    <option value="Phòng máy">Phòng máy</option>
+                    <option value="Phòng nhóm nhỏ (4-6 người)">Phòng nhóm nhỏ (4-6 người)</option>
+                    <option value="Phòng nhóm lớn (8-12 người)">Phòng nhóm lớn (8-12 người)</option>
+                </select>
+            </div>
+
+            <!-- ✅ FIX: THÊM ID -->
+            <div class="form-group full-width">
+                <label><i class="fas fa-comment-dots"></i> Ghi chú (tùy chọn)</label>
+                <textarea id="bkNote" rows="4" placeholder="Yêu cầu đặc biệt hoặc thông tin thêm..."></textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-confirm">Xác Nhận Đặt Chỗ</button>
+        <p class="form-note">* Chúng tôi sẽ liên hệ với bạn qua email hoặc điện thoại để xác nhận đặt chỗ</p>
+    </form>
+</section>
+
+
+    <!--SECTION: TRA CỨU ĐẶT BÀN-->
+<section class="booking-online container" id="dat-cho">
+
+    <div class="section-title">
+        <h2>Tra Cứu <span>Đặt Bàn</span></h2>
+        <p>Kiểm tra trạng thái đặt bàn của bạn bằng số điện thoại hoặc email</p>
+    </div>
+
+    <div class="search-box-container">
+        <div class="search-input-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" placeholder="Nhập số điện thoại hoặc email..." id="search-input">
+            <button class="btn-search">Tra Cứu</button>
+        </div>
+
+        <p class="search-hint">
+            <i class="fas fa-lightbulb"></i> Nhập số điện thoại hoặc email mà bạn đã sử dụng khi đặt bàn
+        </p>
+    </div>
+
+    <div class="search-guide-card">
+        <h3><i class="fas fa-file-alt"></i> Hướng Dẫn Tra Cứu</h3>
+        <ol class="guide-list">
+            <li>Nhập số điện thoại hoặc email mà bạn đã sử dụng khi đặt bàn</li>
+            <li>Nhấn nút "Tra Cứu" hoặc phím Enter</li>
+            <li>Xem thông tin chi tiết và trạng thái đặt bàn của bạn</li>
+        </ol>
+
+    </div>
+
+</section>
+
+<!--SECTION: CÂU HỎI -->
+<section class="faq-section container" id="faq">
+
+    <div class="section-title">
+        <h2>Câu Hỏi <span>Thường Gặp</span></h2>
+        <p>Tìm câu trả lời cho những thắc mắc phổ biến về NestWork</p>
+    </div>
+
+    <div class="faq-container">
+        <div class="faq-item active">
+            <div class="faq-question">
+                <span>NestWork mở cửa từ mấy giờ đến mấy giờ?</span>
+                <i class="fas fa-chevron-up"></i>
+            </div>
+
+            <div class="faq-answer">
+                <p>NestWork mở cửa từ 8:00 AM đến 11:00 PM hàng ngày, kể cả cuối tuần và ngày lễ. Chúng tôi luôn sẵn sàng đón bạn trong khung giờ này để tạo điều kiện tốt nhất cho việc học tập và làm việc.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Tôi có cần đặt chỗ trước không?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+
+            <div class="faq-answer">
+                <p>Bạn có thể đến trực tiếp, tuy nhiên để đảm bảo có vị trí tốt nhất hoặc sử dụng phòng họp, chúng tôi khuyến khích bạn nên đặt chỗ trước qua website hoặc hotline.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+
+            <div class="faq-question">
+                <span>Giá của các gói dịch vụ như thế nào?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+
+            <div class="faq-answer">
+                <p>Chúng tôi có đa dạng các gói theo giờ, gói ngày và gói tháng dành riêng cho học sinh, sinh viên và người đi làm. Vui lòng liên hệ hotline để nhận bảng giá chi tiết mới nhất.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+
+            <div class="faq-question">
+                <span>WiFi có tốc độ bao nhiêu? Có giới hạn băng thông không?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+
+            <div class="faq-answer">
+                <p>NestWork trang bị đường truyền cáp quang tốc độ cao chuyên dụng, không giới hạn băng thông, đảm bảo phục vụ tốt cho cả các công việc nặng như upload video hay họp online.</p>
+            </div>
+
+        </div>
+
+        <div class="faq-item">
+
+            <div class="faq-question">
+                <span>Có chỗ để xe không? Giá bao nhiêu?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+
+            <div class="faq-answer">
+                <p>Chúng tôi có bãi đỗ xe an toàn ngay phía trước quán và hoàn toàn miễn phí cho khách hàng sử dụng dịch vụ tại NestWork.</p>
+            </div>
+
+        </div>
+
+        <div class="faq-item">
+
+            <div class="faq-question">
+                <span>Có chương trình ưu đãi cho sinh viên không?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+
+            <div class="faq-answer">
+                <p>Có, sinh viên sẽ được giảm ngay 10% khi mua các gói tháng khi xuất trình thẻ sinh viên còn hạn sử dụng.</p>
+            </div>
+
+        </div>
+    </div>
+    <!-- SECTION : GIẢI ĐÁP THẮC MẮC -->
+    <div class="contact-support-card">
+        <h3>Vẫn còn thắc mắc?</h3>
+        <p>Đừng ngần ngại liên hệ với chúng tôi, team NestWork luôn sẵn sàng hỗ trợ bạn!</p>
+        <div class="support-buttons">
+            <a href="mailto:nestworkcaffe@gmail.com" class="btn-support email">
+                <i class="fas fa-envelope"></i> Email: nestworkcaffe@gmail.com
+            </a>
+            <a href="tel:0123456789" class="btn-support phone">
+                <i class="fas fa-phone-alt"></i> Hotline: 0123 456 789
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION : TTIN LIÊN HỆ -->
+<section class="contact-booking container" id="lienhe">
+
+    <div class="section-title">
+        <h2>Liên Hệ & <span>Đặt Chỗ</span></h2>
+        <p>Hãy để lại thông tin hoặc ghé thăm chúng tôi. NestWork luôn chào đón bạn!</p>
+    </div>
+
+    <div class="contact-grid">
+        <div class="contact-info-card">
+            <h3>Thông Tin Liên Hệ</h3>
+            
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <h4>Địa chỉ</h4>
+                    <p>123 Khâm Thiên, Đống Đa, Hà Nội</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                    <h4>Điện thoại</h4>
+                    <p>0123456789</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <h4>Email</h4>
+                    <p>nestworkcaffe@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <h4>Giờ mở cửa</h4>
+                    <p>Thứ 2 - Chủ Nhật: 24h/24h</p>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.928458194676!2d105.8009186750311!3d21.00501218863264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab3b6c9f3b8f%3A0x6d9c6c6f6e6f6e6f!2zSMOgIE7hu5lp!5e0!3m2!1svi!2s!4v1700000000000"
+                    width="100%" 
+                    height="200" 
+                    style="border:0; border-radius: 15px;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer class="main-footer">
+    <div class="container footer-grid">
+        <div class="footer-column footer-about">
+            <div class="footer-logo">
+                <img src="img/logo.jpg " alt="NestWork Logo">
+                <span class="brand-name">NestWork</span>
+            </div>
+            <p class="footer-tagline"><strong>NestWork</strong> - Không gian làm việc, học tập và sáng tạo</p>
+            <p class="footer-description">
+                Chúng tôi tạo ra "tổ ấm" cho những ai đam mê năng suất và sáng tạo. 
+                Kết hợp không gian học tập lý tưởng với cà phê thơm ngon.
+            </p>
+            <div class="social-icons">
+                <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-column footer-links">
+            <h3>Liên Kết Nhanh</h3>
+            <ul>
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Về chúng tôi</a></li>
+                <li><a href="#">Combo đặc biệt</a></li>
+                <li><a href="#">Đặt chỗ</a></li>
+                <li><a href="#">Tra cứu đặt bàn</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column footer-contact">
+            <h3>Liên Hệ</h3>
+            <p>123 Đường Nguyễn Huệ</p>
+            <p>Quận 1, TP. HCM</p>
+            <p>0123456789</p>
+            <p>nestworkcaffe@gmail.com</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <p>© 2026 NestWork. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </div>
+</footer>
+
+<!--nút lệnh mở login admin-->
+<a href="adminlogin.html" class="admin-fab" aria-label="Đăng nhập Admin">
+  <span class="admin-tooltip">Đăng nhập Admin</span>
+
+  <span class="admin-icon" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2 20 6v7c0 5-3.5 9-8 9s-8-4-8-9V6l8-4Z"
+            stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+  </span>
+</a>
+
+
+<script>
+  function isLoggedIn() {
+    return localStorage.getItem("isLogin") === "true";
+  }
+
+  // 1) Chặn các nút cần login
+  document.querySelectorAll(".require-login").forEach(el => {
+    el.addEventListener("click", function(e){
+      const target = this.getAttribute("data-target") || "#";
+
+      if(!isLoggedIn()){
+        e.preventDefault();
+
+        // Lưu trang cần quay lại + section cần cuộn tới
+        localStorage.setItem("redirectAfterLogin", window.location.pathname + target);
+
+        // Chuyển sang login
+        window.location.href = "login.html";
+      }
+      // nếu đã login -> để nó chạy bình thường (cuộn xuống section)
+    });
+  });
+
+  // 2) Nếu vừa đăng nhập xong quay về -> tự cuộn tới section
+  window.addEventListener("DOMContentLoaded", () => {
+    const back = localStorage.getItem("redirectAfterLogin");
+
+    if (back && isLoggedIn()) {
+      // xóa để lần sau không bị tự nhảy
+      localStorage.removeItem("redirectAfterLogin");
+
+      // Nếu có #id thì cuộn
+      const hashIndex = back.indexOf("#");
+      if (hashIndex !== -1) {
+        const hash = back.slice(hashIndex);
+        const el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  });
+  document.documentElement.style.scrollBehavior = "smooth";
+</script>
+
+
+<!-- SCRIPT: Kiểm soát giao diện đăng nhập / avatar -->
+
+<script>
+  function isLoggedIn(){
+    return localStorage.getItem("isLogin") === "true";
+  }
+
+  function renderHeaderAuth(){
+    const authButtons = document.getElementById("authButtons");
+    const userActions = document.getElementById("userActions");
+
+    if(isLoggedIn()){
+      authButtons.style.display = "none";
+      userActions.style.display = "flex";
+    }else{
+      authButtons.style.display = "flex";
+      userActions.style.display = "none";
+    }
+  }
+
+  // chạy khi load trang
+  window.addEventListener("DOMContentLoaded", renderHeaderAuth);
+
+  // click avatar → ví dụ logout (bạn có thể mở menu tài khoản)
+  const avatarBtn = document.getElementById("avatarBtn");
+  if(avatarBtn){
+    avatarBtn.addEventListener("click", () => {
+      const ok = confirm("Bạn muốn đăng xuất?");
+      if(ok){
+        localStorage.removeItem("isLogin");
+        localStorage.removeItem("userEmail");
+        renderHeaderAuth();
+      }
+    });
+  }
+</script>
+
+<script>
+const logoutBtn = document.getElementById("logoutBtn");
+if(logoutBtn){
+  logoutBtn.addEventListener("click", () => {
+    const ok = confirm("Bạn muốn đăng xuất?");
+    if(ok){
+      localStorage.removeItem("isLogin");
+      location.reload();
+    }
+  });
+}
+</script>
+
+
+<script>
+  // ===== ORDER: 1 submit = 1 đơn =====
+  function getOrders(){
+    try { return JSON.parse(localStorage.getItem("orders") || "[]"); }
+    catch(e){ return []; }
+  }
+  function saveOrders(arr){
+    localStorage.setItem("orders", JSON.stringify(arr));
+  }
+
+  function pad2(n){ return String(n).padStart(2,"0"); }
+  function pad5(n){ return String(n).padStart(5,"0"); }
+
+  function fmtDate(dateRaw){ // yyyy-mm-dd -> dd/mm/yyyy
+    if(!dateRaw) return "—";
+    const [y,m,d] = dateRaw.split("-");
+    return `${pad2(d)}/${pad2(m)}/${y}`;
+  }
+
+  function nextOrderCode(){
+    const orders = getOrders();
+    const lastNum = orders.reduce((max, o) => {
+      const m = String(o.code || "").match(/^NW-(\d+)$/);
+      return m ? Math.max(max, parseInt(m[1], 10)) : max;
+    }, 0);
+    return `NW-${pad5(lastNum + 1)}`;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("bookingForm"); // id của form bạn là bookingForm
+    if(!form) return;
+
+    // chống gắn listener trùng nếu lỡ nhúng script 2 lần
+    if(form.dataset.bound === "1") return;
+    form.dataset.bound = "1";
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      // lấy dữ liệu
+      const name = document.getElementById("bkName")?.value.trim() || "";
+      const email = document.getElementById("bkEmail")?.value.trim() || "";
+      const phone = document.getElementById("bkPhone")?.value.trim() || "";
+      const dateRaw = document.getElementById("bkDate")?.value || "";
+      const timeFrom = document.getElementById("bkTime")?.value || "";
+      const durationVal = document.getElementById("bkDuration")?.value || "";
+      const peopleVal = document.getElementById("bkPeople")?.value || "";
+
+      const durationTextMap = {
+        "1":"1 giờ","2":"2 giờ","3":"3 giờ","4":"4 giờ",
+        "half":"Nửa ngày (4-6 giờ)",
+        "full":"Cả ngày (8-10 giờ)"
+      };
+
+      const order = {
+        id: Date.now(),                 // ✅ có id để xoá theo id ở pro5KH
+        code: nextOrderCode(),          // ✅ mã tăng dần
+        type: "Đặt chỗ",
+        status: "Chờ duyệt",
+        createdAt: Date.now(),
+
+        name, email, phone,
+        date: fmtDate(dateRaw),
+        time: timeFrom,
+        duration: durationTextMap[durationVal] || durationVal,
+        people: peopleVal
+      };
+
+      const orders = getOrders();
+      orders.unshift(order);
+      saveOrders(orders);
+
+      alert("Nhận đơn thành công ✅");
+      form.reset();
+
+      // nếu bạn muốn chuyển luôn sang pro5KH
+      window.location.href = "pro5KH.html";
+    });
+  });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutBtn = document.getElementById("logoutBtn");
+  if(!logoutBtn) return;
+
+  logoutBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // ✅ XOÁ HẾT TRẠNG THÁI
+    localStorage.removeItem("isLogin");
+    localStorage.removeItem("role");          // ⭐ RẤT QUAN TRỌNG
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("redirectAfterLogin");
+
+    // 👉 quay về trang có Đăng nhập / Đăng ký
+    window.location.href = "index.html";
+  });
+});
+</script>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const myAccountBtn = document.getElementById("myAccountBtn");
+  if(!myAccountBtn) return;
+
+  myAccountBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const role = localStorage.getItem("role");         // "staff" | "customer"
+    const isLogin = localStorage.getItem("isLogin");   // "true" nếu bạn set
+
+    // chưa đăng nhập => chuyển sang login và nhớ trang quay lại
+    if(isLogin !== "true"){
+      localStorage.setItem("redirectAfterLogin", window.location.href);
+      window.location.href = "login.html";
+      return;
+    }
+
+    // đã đăng nhập
+    if(role === "staff"){
+      window.location.href = "staff.html";
+    } else {
+      // khách hàng: bạn đổi sang trang/section bạn muốn
+      window.location.href = "profile.html"; 
+      // hoặc: window.location.href = "index.html#account";
+    }
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const myAccountBtn = document.getElementById("myAccountBtn");
+  if(!myAccountBtn) return;
+
+  myAccountBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const isLogin = localStorage.getItem("isLogin") === "true";
+
+    // ❌ chưa login → đi login
+    if(!isLogin){
+      localStorage.setItem("redirectAfterLogin", window.location.href);
+      window.location.href = "login.html";
+      return;
+    }
+
+    // ✅ ĐÃ LOGIN → ÉP CỨNG VỀ TRANG KHÁCH
+    window.location.href = "pro5KH.html";
+  });
+});
+</script>
+</body>
+</html>

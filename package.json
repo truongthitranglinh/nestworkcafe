@@ -1,0 +1,13 @@
+{
+  "name": "nestwork",
+  "version": "1.0.0",
+  "description": "Timekeeping application for NestWork",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}

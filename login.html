@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="stylelogin.css" />
+</head>
+
+<body>
+  <main class="page">
+    <section class="card" aria-label="Đăng nhập NestWork">
+
+      <!-- Brand -->
+      <div class="brand">
+        <span class="brand__logo" aria-hidden="true">
+          <!-- nếu chưa có logo, cứ để nguyên, nó vẫn ra khung -->
+          <img src="img/logo.jpg" alt="">
+        </span>
+        <span class="brand__name">NestWork</span>
+      </div>
+
+      <h1 class="title">Đăng nhập</h1>
+      <p class="subtitle">Chào mừng bạn quay trở lại</p>
+
+      <form class="form" id="loginForm">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="your@email.com" required />
+        </div>
+
+        <div class="field">
+          <label for="password">Mật khẩu</label>
+          <div class="input-wrap">
+            <input id="password" type="password" placeholder="••••••••" required />
+            <button class="eye-btn" type="button" data-eye="password" aria-label="Hiện/ẩn mật khẩu">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <label class="remember">
+            <input type="checkbox">
+            <span>Ghi nhớ đăng nhập</span>
+          </label>
+
+          <a class="forgot" href="#">Quên mật khẩu?</a>
+        </div>
+
+        <button class="btn-primary" type="submit">Đăng nhập</button>
+
+        <div class="divider">
+          <span>Hoặc đăng nhập với</span>
+        </div>
+
+        <div class="social">
+          <button type="button" class="btn-social">
+            <span class="ic" aria-hidden="true">
+              <!-- Google -->
+              <svg width="18" height="18" viewBox="0 0 48 48">
+                <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8.1 3.1l5.7-5.7C34.2 6.1 29.4 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.1-.1-2.2-.4-3.5z"/>
+                <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8.1 3.1l5.7-5.7C34.2 6.1 29.4 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.1C29.3 36 26.8 37 24 37c-5.2 0-9.6-3.4-11.2-8.1l-6.6 5.1C9.5 40.6 16.2 44 24 44z"/>
+                <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-1.1 3-3.3 5.3-6 6.8l6.2 5.1C39.7 36.8 44 31.1 44 24c0-1.1-.1-2.2-.4-3.5z"/>
+              </svg>
+            </span>
+            Google
+          </button>
+
+          <button type="button" class="btn-social">
+            <span class="ic" aria-hidden="true">
+              <!-- Facebook -->
+              <svg width="18" height="18" viewBox="0 0 48 48">
+                <path fill="#1877F2" d="M24 4C12.95 4 4 12.95 4 24c0 9.99 7.31 18.27 16.88 19.78V29.8h-5.1V24h5.1v-4.4c0-5.03 3-7.8 7.6-7.8 2.2 0 4.5.4 4.5.4v5h-2.53c-2.5 0-3.27 1.55-3.27 3.14V24h5.56l-.89 5.8h-4.67v13.98C36.69 42.27 44 33.99 44 24 44 12.95 35.05 4 24 4z"/>
+              </svg>
+            </span>
+            Facebook
+          </button>
+        </div>
+
+        <p class="bottom">
+          Chưa có tài khoản? <a href="signup.html">Đăng ký</a>
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    // Toggle hiển/ẩn mật khẩu (icon mắt)
+    document.querySelectorAll('[data-eye]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-eye');
+        const input = document.getElementById(id);
+        input.type = input.type === 'password' ? 'text' : 'password';
+      });
+    });
+
+  </script>
+  <script>
+  document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    // demo: đăng nhập là true (bạn có thể kiểm tra email/pass sau)
+    localStorage.setItem("isLogin", "true");
+
+    // lấy đường dẫn cần quay lại
+    const back = localStorage.getItem("redirectAfterLogin");
+
+    // nếu có thì quay lại đúng trang+section
+    if(back){
+      window.location.href = back;
+    } else {
+      // không có thì về trang chủ bình thường
+      window.location.href = "index.html";
+    }
+  });
+</script>
+
+<script>
+const USERS = [
+  {
+    email: "staff@nestwork.com",
+    password: "123456",
+    role: "staff"
+  },
+  {
+    email: "admin@nestwork.com",
+    password: "123456",
+    role: "staff"
+  },
+  {
+    email: "user@gmail.com",
+    password: "123456",
+    role: "customer"
+  }
+];
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("loginForm");
+  if(!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const email = (document.getElementById("email")?.value || "").trim().toLowerCase();
+    const password = document.getElementById("password")?.value || "";
+
+    // STAFF
+    const STAFF = [
+      { email: "staff@nestwork.com", password: "123456", name:"Nguyễn Văn An", code:"NV001" },
+    ];
+
+    const staffAcc = STAFF.find(u => u.email === email && u.password === password);
+    if(staffAcc){
+      localStorage.setItem("role", "staff");
+      localStorage.setItem("isLogin", "true");
+      localStorage.setItem("currentStaff", JSON.stringify(staffAcc));
+      window.location.href = "staff.html";
+      return;
+    }
+
+    // CUSTOMER
+    const CUSTOMERS = [
+      { email: "user@gmail.com", password: "123456", name:"Khách hàng", code:"KH001" },
+    ];
+
+    const cusAcc = CUSTOMERS.find(u => u.email === email && u.password === password);
+    if(cusAcc){
+      localStorage.setItem("role", "customer");
+      localStorage.setItem("isLogin", "true");
+      localStorage.setItem("currentCustomer", JSON.stringify(cusAcc));
+      const back = localStorage.getItem("redirectAfterLogin");
+      window.location.href = back || "pro5KH.html";
+      return;
+    }
+
+    alert("Email hoặc mật khẩu không đúng!");
+  });
+});
+</script>
+
+
+
+</body>
+</html>

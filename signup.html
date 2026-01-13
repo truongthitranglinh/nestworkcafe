@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NestWork - Đăng ký</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- GẮN CSS SIGNUP -->
+  <link rel="stylesheet" href="stylesignup.css" />
+</head>
+
+<body>
+  <main class="page">
+    <section class="card">
+
+      <!-- Brand -->
+      <div class="brand">
+        <span class="brand__logo" aria-hidden="true">
+          <!-- đổi src theo logo của bạn -->
+          <img src="img/logo.jpg" alt="">
+        </span>
+        <span class="brand__name">NestWork</span>
+      </div>
+
+      <h1 class="title">Đăng ký</h1>
+      <p class="subtitle">Tạo tài khoản mới để bắt đầu</p>
+
+      <form class="form" id="signupForm">
+        <div class="field">
+          <label for="fullname">Họ và tên</label>
+          <input id="fullname" name="fullname" type="text" placeholder="Nguyễn Văn A" required />
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="your@email.com" required />
+        </div>
+
+        <div class="field">
+          <label for="password">Mật khẩu</label>
+          <div class="input-wrap">
+            <input id="password" name="password" type="password" placeholder="••••••••" minlength="6" required />
+            <button class="eye-btn" type="button" data-eye="password" aria-label="Hiện/ẩn mật khẩu">
+              <!-- eye svg -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="confirm">Xác nhận mật khẩu</label>
+          <div class="input-wrap">
+            <input id="confirm" name="confirm" type="password" placeholder="••••••••" minlength="6" required />
+            <button class="eye-btn" type="button" data-eye="confirm" aria-label="Hiện/ẩn xác nhận mật khẩu">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <label class="agree">
+          <input id="agree" type="checkbox" />
+          <span>
+            Tôi đồng ý với <a href="#">Điều khoản sử dụng</a> và <a href="#">Chính sách bảo mật</a>
+          </span>
+        </label>
+
+        <button id="btnSignup" class="btn-primary" type="submit" disabled>Đăng ký</button>
+
+        <div class="divider"><span>Hoặc đăng ký với</span></div>
+
+        <div class="social">
+          <button type="button" class="btn-social">
+            <span class="ic" aria-hidden="true">
+              <!-- Google icon -->
+              <svg width="18" height="18" viewBox="0 0 48 48">
+                <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8.1 3.1l5.7-5.7C34.2 6.1 29.4 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.1-.1-2.2-.4-3.5z"/>
+                <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8.1 3.1l5.7-5.7C34.2 6.1 29.4 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.1C29.3 36 26.8 37 24 37c-5.2 0-9.6-3.4-11.2-8.1l-6.6 5.1C9.5 40.6 16.2 44 24 44z"/>
+                <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-1.1 3-3.3 5.3-6 6.8l6.2 5.1C39.7 36.8 44 31.1 44 24c0-1.1-.1-2.2-.4-3.5z"/>
+              </svg>
+            </span>
+            Google
+          </button>
+
+          <button type="button" class="btn-social">
+            <span class="ic" aria-hidden="true">
+              <!-- Facebook icon -->
+              <svg width="18" height="18" viewBox="0 0 48 48">
+                <path fill="#1877F2" d="M24 4C12.95 4 4 12.95 4 24c0 9.99 7.31 18.27 16.88 19.78V29.8h-5.1V24h5.1v-4.4c0-5.03 3-7.8 7.6-7.8 2.2 0 4.5.4 4.5.4v5h-2.53c-2.5 0-3.27 1.55-3.27 3.14V24h5.56l-.89 5.8h-4.67v13.98C36.69 42.27 44 33.99 44 24 44 12.95 35.05 4 24 4z"/>
+              </svg>
+            </span>
+            Facebook
+          </button>
+        </div>
+
+        <p class="bottom">
+          Đã có tài khoản? <a href="login.html">Đăng nhập</a>
+        </p>
+      </form>
+
+    </section>
+  </main>
+
+  <script>
+    // Enable nút "Đăng ký" khi tick đồng ý
+    const agree = document.getElementById('agree');
+    const btn = document.getElementById('btnSignup');
+    agree.addEventListener('change', () => btn.disabled = !agree.checked);
+
+    // Toggle hiển/ẩn mật khẩu
+    document.querySelectorAll('[data-eye]').forEach((b) => {
+      b.addEventListener('click', () => {
+        const id = b.getAttribute('data-eye');
+        const input = document.getElementById(id);
+        input.type = input.type === 'password' ? 'text' : 'password';
+      });
+    });
+
+    // Demo submit (không reload)
+    document.getElementById('signupForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      // bạn thay đoạn này bằng xử lý thật sau
+      alert('Đăng ký (demo)!');
+    });
+  </script>
+</body>
+</html>

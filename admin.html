@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NestWork Admin | Hệ thống quản lý</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-box">
+              <img src="img/logo.jpg" alt="NestWork Logo" class="logo-img">
+            </div>
+            <div>
+                <h1 class="brand-name">NestWork</h1>
+                <p class="role-text">Quản trị viên</p>
+            </div>
+        </div>
+        <nav>
+  <div class="nav-item active" id="btn-dashboard" data-page="dashboard">
+    <i class="fas fa-th-large"></i>
+    <span>Dashboard</span>
+  </div>
+
+  <div class="nav-item" id="btn-orders" data-page="orders">
+    <i class="fas fa-shopping-cart"></i>
+    <span>Quản lý Đơn hàng</span>
+  </div>
+
+  <div class="nav-item" id="btn-warehouse" data-page="warehouse">
+    <i class="fas fa-box"></i>
+    <span>Quản lý Kho</span>
+  </div>
+
+  <div class="nav-item" id="btn-staff" data-page="staff">
+  <i class="fas fa-user-friends"></i>
+  <span>Quản lý Nhân viên</span>
+</div>
+
+
+  <div class="nav-item" id="btn-booking" data-page="booking">
+    <i class="fas fa-calendar-alt"></i>
+    <span>Quản lý Đặt bàn</span>
+  </div>
+
+  <div class="nav-item" data-page="attendance">
+    <i class="fas fa-user-clock"></i>
+    <span>Chấm công</span>
+  </div>
+
+  <div class="nav-divider"></div>
+
+  <div class="nav-item">
+    <i class="fas fa-cog"></i>
+    <span>Cài đặt</span>
+  </div>
+
+  <div class="nav-item logout" id="adminLogoutBtn">
+    <i class="fas fa-sign-out-alt"></i>
+    <span>Đăng xuất</span>
+  </div>
+</nav>
+
+    </aside>
+
+    <main class="main-content">
+        <div id="page-dashboard" class="page-section active">
+            <header>
+                <div class="header-info">
+                    <h2>Dashboard <span class="highlight">Tổng Quan</span></h2>
+                    <p class="sub-header">Chào mừng trở lại! Đây là tổng quan hôm nay.</p>
+                </div>
+            </header>
+
+            <div class="quick-stats-grid">
+                <div class="stat-item blue anim-on-scroll">
+                    <div class="stat-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <div class="stat-info"><span>Đơn hàng</span><strong>24</strong></div>
+                </div>
+                <div class="stat-item green anim-on-scroll">
+                    <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="stat-info"><span>Doanh thu</span><strong>8.4trđ</strong></div>
+                </div>
+                <div class="stat-item orange anim-on-scroll">
+                    <div class="stat-icon"><i class="fas fa-exclamation-circle"></i></div>
+                    <div class="stat-info"><span>Chờ xử lý</span><strong>05</strong></div>
+                </div>
+                <div class="stat-item purple anim-on-scroll">
+                    <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                    <div class="stat-info"><span>Đặt bàn</span><strong>12</strong></div>
+                </div>
+                <div class="stat-item red anim-on-scroll">
+                    <div class="stat-icon"><i class="fas fa-archive"></i></div>
+                    <div class="stat-info"><span>Sắp hết</span><strong>01</strong></div>
+                </div>
+                <div class="stat-item indigo anim-on-scroll">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-info"><span>Nhân viên</span><strong>03</strong></div>
+                </div>
+            </div>
+
+            <div class="dashboard-layout">
+                <div class="col-left">
+                    <div class="card anim-on-scroll">
+                        <div class="card-head"><p>Doanh thu</p><button class="btn-report">View Report</button></div>
+                        <h3>≈ 245 – 265 triệu VND / tháng <span class="up">↑ 2.14%</span></h3>
+                        <p class="date-text">Từ tháng 1 - tháng 10, năm 2026</p>
+                        <div style="height: 250px; margin-top:20px;"><canvas id="revenueChart"></canvas></div>
+                    </div>
+                    <div class="two-col">
+                        <div class="card anim-on-scroll">
+                            <h4 class="card-title">Đánh giá</h4>
+                            <p class="card-subtitle">Cảm nhận của khách hàng</p>
+
+                            <div class="rating-list">
+                                <div class="rating-item">
+                                <div class="rating-top">
+                                    <span>Tiện ích</span>
+                                    <b>85%</b>
+                                </div>
+                                <div class="rating-bar">
+                                    <span class="rating-fill fill-1" style="width:85%"></span>
+                                </div>
+                                </div>
+
+                                <div class="rating-item">
+                                <div class="rating-top">
+                                    <span>Chất lượng</span>
+                                    <b>85%</b>
+                                </div>
+                                <div class="rating-bar">
+                                    <span class="rating-fill fill-2" style="width:85%"></span>
+                                </div>
+                                </div>
+
+                                <div class="rating-item">
+                                <div class="rating-top">
+                                    <span>Vệ sinh</span>
+                                    <b>92%</b>
+                                </div>
+                                <div class="rating-bar">
+                                    <span class="rating-fill fill-3" style="width:92%"></span>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card anim-on-scroll">
+                            <p class="card-label">Món ăn được yêu cầu nhiều nhất</p>
+                            <div class="request-list">
+                                <div class="req-item"><span>Cappuccino</span><b>25.000 VND</b></div>
+                                <div class="req-item"><span>Trà sữa việt quất</span><b>25.000 VND-35.000 VND </b></div>
+                                <div class="req-item"><span>Soda bạc hà </span><b>20.000 VND</b></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-right">
+                    <div class="card anim-on-scroll">
+                        <div class="card-head"><p>Số lượng đơn hàng trong ngày</p><button class="btn-report">View Report</button></div>
+                        <div style="height: 180px;"><canvas id="orderTimeChart"></canvas></div>
+                    </div>
+                    
+                    <div class="card order-card anim-on-scroll">
+                        <div class="card-head">
+                            <div>
+                            <p class="card-kicker">Order</p>
+                            <h3 class="order-num">2.568</h3>
+                            <p class="order-delta"><span class="down">↓ 2.14%</span> vs last week</p>
+                            <p class="date-text">Sales from 12–18 Dec, 2021</p>
+                            </div>
+                            <button class="btn-report">View Report</button>
+                        </div>
+
+                        <div class="chart-box chart-line-2">
+                            <canvas id="orderCompareChart"></canvas>
+                        </div>
+
+                        <div class="chart-legend">
+                            <span class="lg"><i class="dot d1"></i> Last 6 days</span>
+                            <span class="lg"><i class="dot d2"></i> Last Week</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-orders" class="page-section">
+            
+  <header class="orders-header">
+    <div>
+      <h2 class="orders-title">Quản lý Đơn hàng</h2>
+      <p class="orders-sub">Xem và xử lý tất cả đơn hàng từ QR code</p>
+    </div>
+  </header>
+
+  <!-- Stats -->
+  <div class="order-kpi-grid">
+    <div class="order-kpi kpi-wait">
+      <div>
+        <p>Chờ xử lý</p>
+        <b id="kpi-wait">1</b>
+      </div>
+      <span class="kpi-ico"><i class="fa-regular fa-clock"></i></span>
+    </div>
+
+    <div class="order-kpi kpi-prep">
+      <div>
+        <p>Đang chuẩn bị</p>
+        <b id="kpi-prep">1</b>
+      </div>
+      <span class="kpi-ico"><i class="fa-solid fa-cube"></i></span>
+    </div>
+
+    <div class="order-kpi kpi-ready">
+      <div>
+        <p>Sẵn sàng</p>
+        <b id="kpi-ready">1</b>
+      </div>
+      <span class="kpi-ico"><i class="fa-regular fa-circle-check"></i></span>
+    </div>
+
+    <div class="order-kpi kpi-done">
+      <div>
+        <p>Hoàn thành</p>
+        <b id="kpi-done">1</b>
+      </div>
+      <span class="kpi-ico"><i class="fa-regular fa-circle-check"></i></span>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="admin-orders-ui">
+      <!-- FILTERS giống ảnh -->
+      <div class="order-controls-2">
+        <div class="field">
+          <label>Ngày</label>
+          <select id="filterDateA">
+            <option value="today">Hôm nay</option>
+            <option value="week">Tuần này</option>
+            <option value="month">Tháng này</option>
+            <option value="year">Năm nay</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Khung giờ</label>
+          <select id="filterTimeA">
+            <option value="all">Tất cả</option>
+            <option value="morning">Sáng</option>
+            <option value="noon">Trưa</option>
+            <option value="afternoon">Chiều</option>
+            <option value="evening">Tối</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Khu vực</label>
+          <select id="filterAreaA">
+            <option value="all">Tất cả khu vực</option>
+            <option value="Bàn làm việc cá nhân">Bàn làm việc cá nhân</option>
+            <option value="Phòng máy">Phòng máy</option>
+            <option value="Phòng nhóm nhỏ (4-6 người)">Phòng nhóm nhỏ (4-6 người)</option>
+            <option value="Phòng nhóm lớn (8-12 người)">Phòng nhóm lớn (8-12 người)</option>
+          </select>
+        </div>
+      </div>
+      
+
+  <!-- LIST -->
+  <div class="ordersListWrap" id="ordersList"></div>
+</div>
+
+
+        <!-- Content -->
+        <div class="orders-layout">
+
+
+            <!-- RIGHT: details -->
+                    <div class="order-detail">
+                    <div class="detail-empty" id="detailEmpty">
+                        <div class="detail-icon"><i class="fa-solid fa-cube"></i></div>
+                        <p>Chọn đơn hàng để xem chi tiết</p>
+                    </div>
+
+                    <div class="detail-box" id="detailBox" style="display:none;">
+                        <h3 id="detailTitle">ORD-001</h3>
+                        <p class="muted">Chi tiết đơn sẽ hiển thị ở đây…</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+        <div id="page-warehouse" class="page-section">  
+
+          <!-- HEADER -->
+          <header class="orders-header">
+              <div>
+              <h2 class="orders-title">Quản lý Kho</h2>
+              <p class="orders-sub">Quản lý nguyên liệu, vật tư và theo dõi tồn kho</p>
+              </div>
+
+              <button class="btn-report">
+              <i class="fas fa-plus"></i> Thêm sản phẩm
+              </button>
+          </header>
+
+          <!-- CẢNH BÁO -->
+          <div class="card" style="background:#fff1f1;border:1px solid #ffdcdc">
+              <p style="font-weight:700;color:#b42318">
+              ⚠️ Cảnh báo: 4 sản phẩm sắp hết
+              </p>
+
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px">
+              <div class="card">
+                  <b>Cà phê hạt Arabica</b>
+                  <p class="text-sm">Còn: <span style="color:red">2 kg</span></p>
+              </div>
+              <div class="card">
+                  <b>Sữa tươi nguyên chất</b>
+                  <p class="text-sm">Còn: <span style="color:red">5 lít</span></p>
+              </div>
+              <div class="card">
+                  <b>Ly giấy size M</b>
+                  <p class="text-sm">Còn: <span style="color:red">150 cái</span></p>
+              </div>
+              <div class="card">
+                  <b>Siro vani</b>
+                  <p class="text-sm">Còn: <span style="color:red">3 chai</span></p>
+              </div>
+              </div>
+          </div>
+
+          <!-- KPI -->
+          <div class="order-kpi-grid">
+              <div class="order-kpi kpi-ready">
+              <p>Tổng sản phẩm</p>
+              <b>7</b>
+              </div>
+              <div class="order-kpi kpi-wait">
+              <p>Sắp hết hàng</p>
+              <b>4</b>
+              </div>
+              <div class="order-kpi kpi-prep">
+              <p>Nhà cung cấp</p>
+              <b>5</b>
+              </div>
+              <div class="order-kpi kpi-done">
+              <p>Giá trị kho</p>
+              <b>6.6tr</b>
+              </div>
+          </div>
+
+          <!-- SEARCH -->
+          <div class="order-controls-2">
+              <input class="status-select-2" placeholder="Tìm kiếm sản phẩm...">
+              <select class="status-select-2">
+              <option>Tất cả danh mục</option>
+              <option>Cà phê</option>
+              <option>Sữa</option>
+              <option>Bao bì</option>
+              <option>Nguyên liệu</option>
+              </select>
+          </div>
+
+          <!-- TABLE -->
+          <div class="card">
+              <table style="width:100%;border-collapse:collapse">
+              <thead>
+                  <tr style="text-align:left">
+                  <th>Sản phẩm</th>
+                  <th>Danh mục</th>
+                  <th>Tồn kho</th>
+                  <th>Đơn giá</th>
+                  <th>Nhà cung cấp</th>
+                  <th>Cập nhật</th>
+                  <th></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                  <td>☕ Cà phê hạt Arabica</td>
+                  <td>Cà phê</td>
+                  <td style="color:red">2 kg</td>
+                  <td>350.000đ</td>
+                  <td>Cty CP Cafe Việt</td>
+                  <td>10/1/2026</td>
+                  <td>
+                      ✏️ 🗑
+                  </td>
+                  </tr>
+
+                  <tr>
+                  <td>🥛 Sữa tươi nguyên chất</td>
+                  <td>Sữa</td>
+                  <td style="color:red">5 lít</td>
+                  <td>35.000đ</td>
+                  <td>Vinamilk</td>
+                  <td>12/1/2026</td>
+                  <td>✏️ 🗑</td>
+                  </tr>
+
+                  <tr>
+                  <td>📦 Ly giấy size M</td>
+                  <td>Bao bì</td>
+                  <td>150 cái</td>
+                  <td>800đ</td>
+                  <td>Cty Bao bì Xanh</td>
+                  <td>8/1/2026</td>
+                  <td>✏️ 🗑</td>
+                  </tr>
+              </tbody>
+              </table>
+          </div>
+        </div>
+        <div id="page-staff" class="page-section">
+
+          <!-- HEADER -->
+          <header class="orders-header staff-header">
+            <div>
+              <h2 class="orders-title">Quản lý Nhân viên</h2>
+              <p class="orders-sub">Quản lý thông tin và lương nhân viên</p>
+            </div>
+
+            <button class="btn-report" id="btnAddStaff">
+              <i class="fas fa-plus"></i> Thêm nhân viên
+            </button>
+          </header>
+
+          <!-- KPI -->
+          <div class="staff-kpi-grid">
+            <div class="staff-kpi">
+              <p>Tổng nhân viên</p>
+              <b id="kpiStaffTotal">0</b>
+              <span class="kpi-ico"><i class="fa-solid fa-users"></i></span>
+            </div>
+            <div class="staff-kpi kpi-green">
+              <p>Đang làm việc</p>
+              <b id="kpiStaffWorking">0</b>
+              <span class="kpi-ico"><i class="fa-solid fa-user-check"></i></span>
+            </div>
+            <div class="staff-kpi kpi-red">
+              <p>Đã nghỉ</p>
+              <b id="kpiStaffLeft">0</b>
+              <span class="kpi-ico"><i class="fa-solid fa-user-xmark"></i></span>
+            </div>
+            <div class="staff-kpi kpi-blue">
+              <p>Tổng lương / tháng</p>
+              <b id="kpiStaffSalary">0đ</b>
+              <span class="kpi-ico"><i class="fa-solid fa-dollar-sign"></i></span>
+            </div>
+          </div>
+
+          <!-- FILTER -->
+          <div class="staff-controls">
+            <div class="search-box-2 staff-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input id="staffSearch" type="text" placeholder="Tìm theo tên, email hoặc số điện thoại..." />
+            </div>
+
+            <select id="staffRoleFilter" class="status-select-2">
+              <option value="all">Tất cả vị trí</option>
+              <option value="Quản lý">Quản lý</option>
+              <option value="Pha chế">Pha chế</option>
+              <option value="Thu ngân">Thu ngân</option>
+            </select>
+
+            <select id="staffStatusFilter" class="status-select-2">
+              <option value="all">Tất cả trạng thái</option>
+              <option value="Đang làm">Đang làm</option>
+              <option value="Đã nghỉ">Đã nghỉ</option>
+            </select>
+          </div>
+
+          <!-- LAYOUT -->
+          <div class="staff-layout">
+
+            <!-- LEFT LIST -->
+            <div class="staff-list" id="staffList"></div>
+
+            <!-- RIGHT DETAIL -->
+            <div class="staff-detail">
+              <div class="detail-empty" id="staffDetailEmpty">
+                <div class="detail-icon"><i class="fa-solid fa-user"></i></div>
+                <p>Chọn nhân viên để xem chi tiết</p>
+              </div>
+
+              <div class="detail-box" id="staffDetailBox" style="display:none;">
+                <h3 id="staffDetailName">—</h3>
+                <p class="muted" id="staffDetailMeta">—</p>
+
+                <div class="detail-grid">
+                  <div class="drow"><span>Email</span><b id="dEmail">—</b></div>
+                  <div class="drow"><span>SĐT</span><b id="dPhone">—</b></div>
+                  <div class="drow"><span>Vị trí</span><b id="dRole">—</b></div>
+                  <div class="drow"><span>Trạng thái</span><b id="dStatus">—</b></div>
+                  <div class="drow"><span>Vào làm</span><b id="dStart">—</b></div>
+                  <div class="drow"><span>Lương / tháng</span><b id="dSalary">—</b></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div id="page-booking" class="page-section">
+          <header class="orders-header">
+            <div>
+              <h2 class="orders-title">Quản lý Đặt bàn</h2>
+              <p class="orders-sub">Xem và xử lý các yêu cầu đặt bàn từ khách</p>
+            </div>
+          </header>
+
+          <!-- FILTERS -->
+          <div class="booking-filters">
+            <div class="field">
+              <label>Ngày</label>
+              <select id="bkFilterDate">
+                <option value="all">Tất cả</option>
+                <option value="today">Hôm nay</option>
+                <option value="week">Tuần này</option>
+                <option value="month">Tháng này</option>
+                <option value="year">Năm nay</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Khung giờ</label>
+              <select id="bkFilterTime">
+                <option value="all">Tất cả</option>
+                <option value="morning">Sáng</option>
+                <option value="noon">Chiều</option>
+                <option value="evening">Tối</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Khu vực</label>
+              <select id="bkFilterArea">
+                <option value="all">Tất cả khu vực</option>
+                <option value="Bàn học đơn">Bàn học đơn</option>
+                <option value="Phòng máy">Phòng máy</option>
+                <option value="Phòng học nhỏ">Phòng học nhỏ</option>
+                <option value="Phòng họp lớn">Phòng họp lớn</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- LIST -->
+          <div class="booking-list" id="bookingList"></div>
+        </div>
+
+          <!-- ================== PAGE: ATTENDANCE (ADMIN) ================== -->
+          <div id="page-attendance" class="page-section">
+            <header class="att-header">
+              <div>
+                <h2 class="att-title">Quản lý Chấm công</h2>
+                <p class="att-sub">Theo dõi và quản lý thời gian làm việc của nhân viên</p>
+              </div>
+            </header>
+
+            <!-- Toolbar -->
+            <div class="att-toolbar">
+              <div class="att-tools-left">
+                <div class="att-search">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input id="attSearchInput" type="text" placeholder="Tìm kiếm nhân viên..." />
+                </div>
+
+                <div class="att-date">
+                  <input id="attDateInput" type="date" />
+                  <i class="fa-regular fa-calendar"></i>
+                </div>
+
+                <div class="att-select">
+                  <select id="attStatusFilter">
+                    <option value="all">Tất cả</option>
+                    <option value="Đúng giờ">Đúng giờ</option>
+                    <option value="Muộn">Muộn</option>
+                    <option value="Vắng mặt">Vắng mặt</option>
+                    <option value="Về sớm">Về sớm</option>
+                  </select>
+                  <i class="fa-solid fa-angle-down"></i>
+                </div>
+              </div>
+
+              <div class="att-tools-right">
+                <button class="att-btn ghost" id="btnExportAtt">
+                  <i class="fa-solid fa-download"></i>
+                  Xuất file
+                </button>
+                <button class="att-btn primary" id="btnAddAtt">
+                  <i class="fa-solid fa-plus"></i>
+                  Thêm bản ghi
+                </button>
+              </div>
+            </div>
+
+            <!-- KPI -->
+            <div class="att-kpi-grid">
+              <div class="att-kpi">
+                <div class="kpi-text">
+                  <p>Tổng NV hôm nay</p>
+                  <b id="kpiTotal">0</b>
+                </div>
+                <div class="kpi-ico kpi-yellow"><i class="fa-solid fa-user-group"></i></div>
+              </div>
+
+              <div class="att-kpi">
+                <div class="kpi-text">
+                  <p>Đúng giờ</p>
+                  <b id="kpiOnTime">0</b>
+                </div>
+                <div class="kpi-ico kpi-green"><i class="fa-solid fa-circle-check"></i></div>
+              </div>
+
+              <div class="att-kpi">
+                <div class="kpi-text">
+                  <p>Đi muộn</p>
+                  <b id="kpiLate">0</b>
+                </div>
+                <div class="kpi-ico kpi-orange"><i class="fa-solid fa-circle-exclamation"></i></div>
+              </div>
+
+              <div class="att-kpi">
+                <div class="kpi-text">
+                  <p>Vắng mặt</p>
+                  <b id="kpiAbsent">0</b>
+                </div>
+                <div class="kpi-ico kpi-red"><i class="fa-solid fa-circle-xmark"></i></div>
+              </div>
+            </div>
+
+            <!-- Table -->
+            <div class="att-table-card">
+              <table class="att-table">
+                <thead>
+                  <tr>
+                    <th>Mã NV</th>
+                    <th>Tên nhân viên</th>
+                    <th>Bộ phận</th>
+                    <th>Ngày</th>
+                    <th>Giờ vào</th>
+                    <th>Giờ ra</th>
+                    <th>Tổng giờ</th>
+                    <th>Trạng thái</th>
+                    <th>Ghi chú</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+
+                <tbody id="attTbody">
+                  <!-- render bằng JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+      
+
+    </main>
+
+    <script>
+        function switchPage(pageId) {
+    // Ẩn tất cả page
+    document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
+    // Bỏ active tất cả menu
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+    // Hiện page được chọn
+    document.getElementById('page-' + pageId).classList.add('active');
+
+    // Active đúng nút menu tương ứng
+    const btn = document.querySelector(`.nav-item[data-page="${pageId}"]`);
+    if (btn) btn.classList.add('active');
+}
+
+
+        // --- CÁC BIỂU ĐỒ DASHBOARD ---
+        new Chart(document.getElementById('revenueChart'), {
+            type: 'bar',
+            data: {
+                labels: ['01','02','03','04','05','06','07','08','09','10'],
+                datasets: [{ data: [15,12,18,11,22,16,19,14,20,17], backgroundColor: '#8c8856', borderRadius: 5 }]
+            },
+            options: { maintainAspectRatio: false, plugins: { legend: { display: false } } }
+        });
+
+        new Chart(document.getElementById('orderTimeChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Afternoon', 'Evening', 'Morning'],
+                datasets: [{ data: [40, 32, 28], backgroundColor: ['#8c8856', '#3e2723', '#d7ccc8'] }]
+            },
+            options: { maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom' } } }
+        });
+
+        new Chart(document.getElementById('orderLineChart'), {
+            type: 'line',
+            data: {
+                labels: ['01','02','03','04','05','06','07','08'],
+                datasets: [{ data: [10, 15, 12, 18, 11, 14, 10, 22], borderColor: '#3e2723', backgroundColor: 'rgba(62, 39, 35, 0.05)', fill: true, tension: 0.4, pointRadius: 0 }]
+            },
+            options: { 
+                maintainAspectRatio: false, 
+                plugins: { legend: { display: false } },
+                scales: { x: { display: false }, y: { display: false } }
+            }
+        });
+
+        new Chart(document.getElementById('orderCompareChart'), {
+            type: 'line',
+            data: {
+                labels: ['01','02','03','04','05','06'],
+                datasets: [
+                {
+                    label: 'Last 6 days',
+                    data: [10, 8, 14, 13, 9, 20],
+                    borderColor: '#3e2723',
+                    borderWidth: 3,
+                    tension: 0.45,
+                    pointRadius: 0
+                },
+                {
+                    label: 'Last Week',
+                    data: [16, 12, 10, 15, 11, 14],
+                    borderColor: '#d7ccc8',
+                    borderWidth: 3,
+                    tension: 0.45,
+                    pointRadius: 0
+                }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                x: { grid: { display: false }, ticks: { color: '#94a3b8' } },
+                y: { display: false, grid: { display: false } }
+                }
+            }
+            });
+
+
+        function selectOrder(orderId){
+                document.querySelectorAll('.order-card-2').forEach(el => el.classList.remove('selected'));
+                const card = [...document.querySelectorAll('.order-card-2')].find(x => x.querySelector('.order-id b')?.textContent === orderId);
+                if(card) card.classList.add('selected');
+
+                document.getElementById('detailEmpty').style.display = 'none';
+                document.getElementById('detailBox').style.display = 'block';
+                document.getElementById('detailTitle').textContent = orderId;
+            }
+        document.querySelectorAll('.nav-item[data-page]').forEach(item => {
+        item.addEventListener('click', () => switchPage(item.dataset.page));
+        });
+
+    </script>
+
+  <script>
+  // ===== ORDERS (ADMIN) =====
+  function getOrders(){
+    try { return JSON.parse(localStorage.getItem("orders") || "[]"); }
+    catch(e){ return []; }
+  }
+  function saveOrders(arr){
+    localStorage.setItem("orders", JSON.stringify(arr));
+  }
+
+  // map status -> badge class (bạn có thể chỉnh theo CSS của bạn)
+  function badgeClass(status){
+    if(status === "Chờ duyệt") return "badge-wait";
+    if(status === "Đã duyệt")  return "badge-ready";
+    if(status === "Không tới") return "badge-prep";   // tạm dùng màu sẵn
+    if(status === "Đã hủy")    return "badge-done";   // tạm dùng màu sẵn
+    return "badge-wait";
+  }
+
+  function renderAdminOrders(){
+    const box = document.getElementById("ordersList");
+    if(!box) return;
+
+    const orders = getOrders();
+
+    // cập nhật KPI đơn giản theo status
+    const wait = orders.filter(o => (o.status || "Chờ duyệt") === "Chờ duyệt").length;
+    const prep = orders.filter(o => (o.status || "") === "Không tới").length;
+    const ready = orders.filter(o => (o.status || "") === "Đã duyệt").length;
+    const done = orders.filter(o => (o.status || "") === "Đã hủy").length;
+
+    const elWait  = document.getElementById("kpi-wait");
+    const elPrep  = document.getElementById("kpi-prep");
+    const elReady = document.getElementById("kpi-ready");
+    const elDone  = document.getElementById("kpi-done");
+    if(elWait)  elWait.textContent  = wait;
+    if(elPrep)  elPrep.textContent  = prep;
+    if(elReady) elReady.textContent = ready;
+    if(elDone)  elDone.textContent  = done;
+
+    if(orders.length === 0){
+      box.innerHTML = `<div style="padding:16px;color:#666;">Chưa có đơn nào.</div>`;
+      return;
+    }
+
+    box.innerHTML = orders.map(o => {
+      const st = o.status || "Chờ duyệt";
+      const code = o.code || ("NW-" + (o.id || ""));
+      const name = o.name || "Khách";
+      const phone = o.phone || "-";
+      const date  = o.date || "-";
+      const time  = o.time || "-";
+      const people = o.people || "-";
+      const note = o.note ? `<div class="order-note">Ghi chú: ${o.note}</div>` : "";
+
+      // chỉ hiện nút thao tác khi còn chờ duyệt
+      const actions = (st === "Chờ duyệt")
+        ? `
+          <div class="order-actions">
+            <button class="btn-primary" type="button" onclick="adminApprove(${o.id})">✔ Xác nhận</button>
+            <button class="btn-ready" type="button" onclick="adminNoShow(${o.id})">⚠ Không tới</button>
+            <button class="btn-danger" type="button" onclick="adminCancel(${o.id})">✖ Hủy</button>
+          </div>
+        `
+        : `
+          <div class="order-actions">
+            <button class="btn-ready" type="button" disabled>${st}</button>
+          </div>
+        `;
+
+      return `
+        <div class="order-card-2" data-status="${st}" onclick="selectOrder('${code}')">
+          <div class="order-top">
+            <div class="order-id">
+              <b>${code}</b>
+              <span class="badge ${badgeClass(st)}">${st}</span>
+            </div>
+            <button class="mini-eye" type="button" title="Xem">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+
+          <div class="order-meta">
+            <span><i class="fa-regular fa-user"></i> ${name}</span>
+            <span><i class="fa-solid fa-phone"></i> ${phone}</span>
+          </div>
+
+          <div class="order-items">
+            <div class="row"><span><i class="fa-regular fa-calendar"></i> ${date}</span><b>${time}</b></div>
+            <div class="row"><span><i class="fa-solid fa-users"></i> ${people} người</span><b></b></div>
+          </div>
+
+          ${note}
+
+          <div class="order-bottom">
+            <div class="order-total">Trạng thái: <b>${st}</b></div>
+            ${actions}
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  // ===== ACTIONS (ADMIN) =====
+  function adminApprove(id){
+    const orders = getOrders();
+    const x = orders.find(o => o.id == id);
+    if(!x) return;
+    x.status = "Đã duyệt";
+    saveOrders(orders);
+    renderAdminOrders();
+  }
+
+  function adminNoShow(id){
+    const orders = getOrders();
+    const x = orders.find(o => o.id == id);
+    if(!x) return;
+    x.status = "Không tới"; // ✅ tách riêng khỏi "Đã hủy"
+    saveOrders(orders);
+    renderAdminOrders();
+  }
+
+  function adminCancel(id){
+    if(!confirm("Bạn muốn hủy đơn này?")) return;
+    const orders = getOrders();
+    const x = orders.find(o => o.id == id);
+    if(!x) return;
+    x.status = "Đã hủy"; // ✅ KHÔNG xoá khỏi mảng để khách vẫn thấy lịch sử
+    saveOrders(orders);
+    renderAdminOrders();
+  }
+
+  // ✅ tự cập nhật khi tab khác (staff / pro5KH) thay đổi localStorage
+  window.addEventListener("storage", (e) => {
+    if(e.key === "orders") renderAdminOrders();
+  });
+
+  // render lần đầu khi mở trang
+  document.addEventListener("DOMContentLoaded", renderAdminOrders);
+
+
+  
+</script>
+
+<script>
+  // ===== STAFF (ADMIN) =====
+  const STAFF_KEY = "staff";
+
+  function formatVND(n){
+    try {
+      return Number(n || 0).toLocaleString("vi-VN") + "VND";
+    } catch(e){
+      return (n || 0) + "VND";
+    }
+  }
+
+  function getStaff(){
+    try { return JSON.parse(localStorage.getItem(STAFF_KEY) || "[]"); }
+    catch(e){ return []; }
+  }
+  function saveStaff(arr){
+    localStorage.setItem(STAFF_KEY, JSON.stringify(arr));
+  }
+
+  // Demo data nếu chưa có (để bạn thấy UI chạy)
+  function seedStaffIfEmpty(){
+    const cur = getStaff();
+    if(cur.length) return;
+    const demo = [
+      { id: 1, code:"NV001", name: "Nguyễn Văn An", role: "Quản lý", status: "Đang làm", email:"an.nguyen@nestwork.com", phone:"0987654321", startDate:"15/01/2024", salary:15000000 },
+      { id: 2, code:"NV002", name: "Trần Thị Bình", role: "Pha chế", status: "Đang làm", email:"binh.tran@nestwork.com", phone:"0912345678", startDate:"20/03/2024", salary:8000000 },
+      { id: 3, code:"NV003", name: "Lê Văn Cường", role: "Thu ngân", status: "Đang làm", email:"cuong.le@nestwork.com", phone:"0901234567", startDate:"10/05/2024", salary:7500000 },
+      { id: 4, code:"NV004", name: "Phạm Thị Dung", role: "Pha chế", status: "Đang làm", email:"dung.pham@nestwork.com", phone:"0923456789", startDate:"03/06/2024", salary:7000000 },
+      { id: 5, code:"NV005", name: "Hoàng Minh", role: "Pha chế", status: "Đang làm", email:"minh.hoang@nestwork.com", phone:"0934567890", startDate:"18/06/2024", salary:6500000 },
+      { id: 6, code:"NV006", name: "Đào Thị Lan", role: "Thu ngân", status: "Đã nghỉ", email:"lan.dao@nestwork.com", phone:"0945678901", startDate:"12/01/2024", salary:6500000 },
+    ];
+    saveStaff(demo);
+  }
+
+  function staffPillRole(role){
+    const map = {
+      "Quản lý": "pill-role pill-manager",
+      "Pha chế": "pill-role pill-staff",
+      "Thu ngân": "pill-role pill-cashier"
+    };
+    return map[role] || "pill-role";
+  }
+
+  function staffPillStatus(status){
+    return status === "Đã nghỉ" ? "pill-status pill-left" : "pill-status pill-working";
+  }
+
+  function updateStaffKPI(staff){
+    const total = staff.length;
+    const working = staff.filter(s => s.status === "Đang làm").length;
+    const left = staff.filter(s => s.status === "Đã nghỉ").length;
+    const salaryTotal = staff
+      .filter(s => s.status === "Đang làm")
+      .reduce((sum, s) => sum + Number(s.salary || 0), 0);
+
+    const elTotal = document.getElementById("kpiStaffTotal");
+    const elWorking = document.getElementById("kpiStaffWorking");
+    const elLeft = document.getElementById("kpiStaffLeft");
+    const elSalary = document.getElementById("kpiStaffSalary");
+
+    if(elTotal) elTotal.textContent = total;
+    if(elWorking) elWorking.textContent = working;
+    if(elLeft) elLeft.textContent = left;
+    if(elSalary) elSalary.textContent = (salaryTotal/1000000).toFixed(1) + "tr";
+  }
+
+  function renderStaff(){
+    const listBox = document.getElementById("staffList");
+    if(!listBox) return;
+
+    const q = (document.getElementById("staffSearch")?.value || "").trim().toLowerCase();
+    const roleF = document.getElementById("staffRoleFilter")?.value || "all";
+    const statusF = document.getElementById("staffStatusFilter")?.value || "all";
+
+    const all = getStaff();
+
+    // KPI dựa trên toàn bộ (không filter)
+    updateStaffKPI(all);
+
+    const filtered = all.filter(s => {
+      const hay = `${s.name||""} ${s.email||""} ${s.phone||""}`.toLowerCase();
+      if(q && !hay.includes(q)) return false;
+      if(roleF !== "all" && s.role !== roleF) return false;
+      if(statusF !== "all" && s.status !== statusF) return false;
+      return true;
+    });
+
+    if(filtered.length === 0){
+      listBox.innerHTML = `<div class="card" style="padding:16px;color:#666;">Không có nhân viên phù hợp.</div>`;
+      return;
+    }
+
+    listBox.innerHTML = filtered.map(s => `
+      <div class="staff-card" onclick="selectStaff(${s.id})">
+        <div class="staff-avatar">${(s.name||"?").trim().charAt(0).toUpperCase()}</div>
+
+        <div class="staff-info">
+          <div class="staff-name">
+            <b>${s.name || "-"}</b>
+            <span class="${staffPillRole(s.role)}">${s.role || "-"}</span>
+            <span class="${staffPillStatus(s.status)}">${s.status || "-"}</span>
+          </div>
+
+          <div class="staff-meta">
+            <span><i class="fa-regular fa-envelope"></i> ${s.email || "-"}</span>
+            <span><i class="fa-solid fa-phone"></i> ${s.phone || "-"}</span>
+          </div>
+
+          <div class="staff-meta">
+            <span><i class="fa-regular fa-calendar"></i> Vào làm: ${s.startDate || "-"}</span>
+            <span><i class="fa-solid fa-dollar-sign"></i> ${formatVND(s.salary)}</span>
+          </div>
+        </div>
+
+        <div class="staff-actions" onclick="event.stopPropagation()">
+          <button class="icon-btn" title="Sửa" onclick="editStaff(${s.id})"><i class="fa-regular fa-pen-to-square"></i></button>
+          <button class="icon-btn danger" title="Xóa" onclick="deleteStaff(${s.id})"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  function selectStaff(id){
+    const s = getStaff().find(x => x.id == id);
+    if(!s) return;
+
+    document.getElementById("staffDetailEmpty").style.display = "none";
+    document.getElementById("staffDetailBox").style.display = "block";
+
+    document.getElementById("staffDetailName").textContent = s.name || "—";
+    document.getElementById("staffDetailMeta").textContent = `${s.role || "—"} • ${s.status || "—"}`;
+
+    document.getElementById("dEmail").textContent = s.email || "—";
+    document.getElementById("dPhone").textContent = s.phone || "—";
+    document.getElementById("dRole").textContent = s.role || "—";
+    document.getElementById("dStatus").textContent = s.status || "—";
+    document.getElementById("dStart").textContent = s.startDate || "—";
+    document.getElementById("dSalary").textContent = formatVND(s.salary);
+  }
+
+  // Tạm thời: thao tác basic bằng prompt cho nhanh (bạn muốn làm modal đẹp mình làm tiếp)
+  function editStaff(id){
+    const staff = getStaff();
+    const s = staff.find(x => x.id == id);
+    if(!s) return;
+
+    const name = prompt("Tên nhân viên:", s.name || "");
+    if(name === null) return;
+
+    const role = prompt("Vị trí (Quản lý / Pha chế / Thu ngân):", s.role || "");
+    if(role === null) return;
+
+    const status = prompt("Trạng thái (Đang làm / Đã nghỉ):", s.status || "");
+    if(status === null) return;
+
+    const email = prompt("Email:", s.email || "");
+    if(email === null) return;
+
+    const phone = prompt("SĐT:", s.phone || "");
+    if(phone === null) return;
+
+    const startDate = prompt("Vào làm (dd/mm/yyyy):", s.startDate || "");
+    if(startDate === null) return;
+
+    const salary = prompt("Lương / tháng (số):", String(s.salary || 0));
+    if(salary === null) return;
+
+    Object.assign(s, {
+      name, role, status, email, phone, startDate,
+      salary: Number(salary || 0)
+    });
+
+    saveStaff(staff);
+    renderStaff();
+    selectStaff(id);
+  }
+
+  function deleteStaff(id){
+    if(!confirm("Bạn chắc chắn muốn xóa nhân viên này?")) return;
+    let staff = getStaff().filter(x => x.id != id);
+    saveStaff(staff);
+
+    // reset detail
+    document.getElementById("staffDetailBox").style.display = "none";
+    document.getElementById("staffDetailEmpty").style.display = "flex";
+
+    renderStaff();
+  }
+
+  function addStaff(){
+    const staff = getStaff();
+    const nextId = staff.length ? Math.max(...staff.map(s => s.id)) + 1 : 1;
+
+    const name = prompt("Tên nhân viên:");
+    if(!name) return;
+
+    const role = prompt("Vị trí (Quản lý / Pha chế / Thu ngân):", "Pha chế");
+    if(!role) return;
+
+    const status = prompt("Trạng thái (Đang làm / Đã nghỉ):", "Đang làm");
+    if(!status) return;
+
+    const email = prompt("Email:");
+    const phone = prompt("SĐT:");
+    const startDate = prompt("Vào làm (dd/mm/yyyy):", "01/01/2026");
+    const salary = Number(prompt("Lương / tháng (số):", "7000000") || 0);
+
+    staff.push({ id: nextId, name, role, status, email, phone, startDate, salary });
+    saveStaff(staff);
+    renderStaff();
+  }
+
+  // hook events
+  document.addEventListener("DOMContentLoaded", () => {
+    seedStaffIfEmpty();
+
+    // lọc / search
+    document.getElementById("staffSearch")?.addEventListener("input", renderStaff);
+    document.getElementById("staffRoleFilter")?.addEventListener("change", renderStaff);
+    document.getElementById("staffStatusFilter")?.addEventListener("change", renderStaff);
+
+    document.getElementById("btnAddStaff")?.addEventListener("click", addStaff);
+
+    // render lần đầu
+    renderStaff();
+  });
+
+  // cập nhật nếu tab khác đổi localStorage
+  window.addEventListener("storage", (e) => {
+    if(e.key === STAFF_KEY) renderStaff();
+  });
+</script>
+
+<script>
+  // ===== ACTIONS (ADMIN) =====
+  function lockAndUpdateOrder(id, newStatus){
+    // luôn đọc mới nhất trước khi cập nhật (tránh tab khác vừa đổi)
+    const orders = getOrders();
+    const x = orders.find(o => o.id == id);
+    if(!x) return;
+
+    // ✅ nếu đã bị xử lý rồi thì KHÔNG cho cập nhật nữa
+    if((x.status || "Chờ duyệt") !== "Chờ duyệt"){
+      alert(`Đơn này đã được xử lý (${x.status}). Bạn chỉ có thể xem trạng thái.`);
+      renderAdminOrders();
+      return;
+    }
+
+    // ✅ cập nhật trạng thái + ghi dấu ai xử lý
+    x.status = newStatus;
+    x.decidedBy = "admin";        // ai bấm
+    x.decidedAt = Date.now();     // lúc bấm
+
+    saveOrders(orders);
+    renderAdminOrders();
+  }
+
+  function adminApprove(id){
+    lockAndUpdateOrder(id, "Đã duyệt");
+  }
+
+  function adminNoShow(id){
+    lockAndUpdateOrder(id, "Không tới");
+  }
+
+  function adminCancel(id){
+    if(!confirm("Bạn muốn hủy đơn này?")) return;
+    lockAndUpdateOrder(id, "Đã hủy");
+  }
+
+</script>
+
+<script>
+/* ===== ADMIN BOOKING (Dùng chung localStorage "orders") ===== */
+function getOrders(){
+  try { return JSON.parse(localStorage.getItem("orders") || "[]"); }
+  catch(e){ return []; }
+}
+function saveOrders(arr){
+  localStorage.setItem("orders", JSON.stringify(arr));
+}
+
+function bookingChip(status){
+  const st = status || "Chờ duyệt";
+  if(st === "Đã duyệt")  return `<span class="bk-chip approved">Đã duyệt</span>`;
+  if(st === "Chờ duyệt") return `<span class="bk-chip pending">Chưa duyệt</span>`;
+  if(st === "Không tới") return `<span class="bk-chip noshow">Không tới</span>`;
+  if(st === "Đã hủy")    return `<span class="bk-chip cancel">Đã hủy</span>`;
+  return `<span class="bk-chip pending">${st}</span>`;
+}
+
+function toTimeBucket(timeStr){
+  // timeStr dạng "15:27"
+  if(!timeStr || !timeStr.includes(":")) return "all";
+  const h = Number(timeStr.split(":")[0] || 0);
+  if(h >= 5 && h < 11) return "morning";
+  if(h >= 11 && h < 14) return "noon";
+  if(h >= 14 && h < 18) return "afternoon";
+  return "evening";
+}
+
+// filter date: nếu order có o.createdAt (timestamp) thì lọc theo thời gian thật.
+// nếu không có createdAt thì coi như "today" để demo không bị rỗng.
+function passDateFilter(o, filter){
+  if(filter === "all") return true;
+
+  const ts = Number(o.createdAt || 0);
+  if(!ts) return (filter === "today"); // demo fallback
+
+  const d = new Date(ts);
+  const now = new Date();
+
+  const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+  const startOfWeek  = new Date(now.getFullYear(), now.getMonth(), now.getDate() - ((now.getDay()+6)%7)).getTime(); // Mon
+  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).getTime();
+  const startOfYear  = new Date(now.getFullYear(), 0, 1).getTime();
+
+  if(filter === "today") return ts >= startOfToday;
+  if(filter === "week")  return ts >= startOfWeek;
+  if(filter === "month") return ts >= startOfMonth;
+  if(filter === "year")  return ts >= startOfYear;
+  return true;
+}
+
+function lockAndUpdateBooking(id, newStatus){
+  const orders = getOrders();
+  const x = orders.find(o => o.id == id);
+  if(!x) return;
+
+  const cur = x.status || "Chờ duyệt";
+
+  // ✅ nếu đã xử lý thì khóa (chỉ xem)
+  if(cur !== "Chờ duyệt"){
+    alert(`Đơn này đã được xử lý (${cur}). Bạn chỉ có thể xem trạng thái.`);
+    renderAdminBooking();
+    return;
+  }
+
+  x.status = newStatus;
+  x.decidedBy = "admin";
+  x.decidedAt = Date.now();
+
+  saveOrders(orders);
+  renderAdminBooking();
+}
+
+function renderAdminBooking(){
+  const box = document.getElementById("bookingList");
+  if(!box) return;
+
+  const fd = document.getElementById("bkFilterDate")?.value || "today";
+  const ft = document.getElementById("bkFilterTime")?.value || "all";
+  const fa = document.getElementById("bkFilterArea")?.value || "all";
+
+  const orders = getOrders();
+
+  const filtered = orders.filter(o => {
+    const st = o.status || "Chờ duyệt";
+    // booking page: m có thể muốn xem tất cả trạng thái => không lọc theo status ở đây
+
+    if(!passDateFilter(o, fd)) return false;
+
+    if(ft !== "all"){
+      const bucket = toTimeBucket(o.time);
+      if(bucket !== ft) return false;
+    }
+
+    if(fa !== "all"){
+      if((o.area || "") !== fa) return false;
+    }
+
+    return true;
+  });
+
+  if(filtered.length === 0){
+    box.innerHTML = `<div class="bk-empty">Chưa có đơn đặt bàn phù hợp.</div>`;
+    return;
+  }
+
+  box.innerHTML = filtered.map(o => {
+    const st = o.status || "Chờ duyệt";
+    const locked = st !== "Chờ duyệt";
+
+    return `
+      <div class="bk-card">
+        <div class="bk-left">
+          <div class="bk-title">
+            ${o.name || "Khách"}
+            ${bookingChip(st)}
+          </div>
+
+          <div class="bk-meta">
+            <span><i class="fa-solid fa-phone"></i>${o.phone || "-"}</span>
+            <span><i class="fa-solid fa-users"></i>${o.people || "-"} người</span>
+            <span><i class="fa-regular fa-clock"></i>${o.time || "-"}</span>
+            <span><i class="fa-solid fa-location-dot"></i>${o.area || "-"} • ${o.table || "-"}</span>
+          </div>
+        </div>
+
+        <div class="bk-actions">
+          <button class="bk-btn ok" ${locked ? "disabled" : ""} onclick="lockAndUpdateBooking(${o.id}, 'Đã duyệt')">
+            <i class="fa-solid fa-check"></i> Xác nhận
+          </button>
+
+          <button class="bk-btn no" ${locked ? "disabled" : ""} onclick="lockAndUpdateBooking(${o.id}, 'Không tới')">
+            <i class="fa-solid fa-xmark"></i> Không tới
+          </button>
+
+          <button class="bk-btn cancel" ${locked ? "disabled" : ""} onclick="(function(){ if(confirm('Bạn muốn hủy đơn này?')) lockAndUpdateBooking(${o.id}, 'Đã hủy'); })()">
+            <i class="fa-solid fa-xmark"></i> Hủy
+          </button>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  // hook filters
+  document.getElementById("bkFilterDate")?.addEventListener("change", renderAdminBooking);
+  document.getElementById("bkFilterTime")?.addEventListener("change", renderAdminBooking);
+  document.getElementById("bkFilterArea")?.addEventListener("change", renderAdminBooking);
+
+  // render lần đầu
+  renderAdminBooking();
+});
+
+// sync khi tab khác đổi localStorage
+window.addEventListener("storage", (e) => {
+  if(e.key === "orders") renderAdminBooking();
+});
+
+
+
+</script>
+
+<script>
+(function(){
+  const KEY = "attendanceLogs";
+  const tbody = document.getElementById("attTbody");
+  const dateInput = document.getElementById("attDateInput");
+  const searchInput = document.getElementById("attSearchInput");
+  const statusFilter = document.getElementById("attStatusFilter");
+
+  if(!tbody) return;
+
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth()+1).padStart(2,"0");
+  const dd = String(today.getDate()).padStart(2,"0");
+  if(dateInput) dateInput.value = `${yyyy}-${mm}-${dd}`;
+
+  function getData(){
+    try{
+      const raw = localStorage.getItem(KEY);
+      return raw ? JSON.parse(raw) : [];
+    }catch(e){
+      console.error("Failed to parse attendance logs:", e);
+      return [];
+    }
+  }
+
+  function saveData(data) {
+    localStorage.setItem(KEY, JSON.stringify(data));
+  }
+
+  function chip(status){
+    if(status === "Đúng giờ") return `<span class="att-chip chip-ontime"><i class="fa-solid fa-check"></i> Đúng giờ</span>`;
+    if(status === "Đi muộn") return `<span class="att-chip chip-late"><i class="fa-solid fa-circle-exclamation"></i> Đi muộn</span>`;
+    if(status === "Vắng mặt") return `<span class="att-chip chip-absent"><i class="fa-solid fa-xmark"></i> Vắng mặt</span>`;
+    if(status === "Về sớm") return `<span class="att-chip chip-early"><i class="fa-solid fa-clock"></i> Về sớm</span>`;
+    return `<span class="att-chip">${status||"-"}</span>`;
+  }
+
+  function calculateTotalHours(inTime, outTime) {
+    if (!inTime || !outTime) return "N/A";
+    try {
+      const [inH, inM] = inTime.split(':').map(Number);
+      const [outH, outM] = outTime.split(':').map(Number);
+      const inDate = new Date(0, 0, 0, inH, inM);
+      const outDate = new Date(0, 0, 0, outH, outM);
+      let diff = (outDate - inDate) / (1000 * 60 * 60);
+      if (diff < 0) diff += 24;
+      return diff.toFixed(1) + 'h';
+    } catch (e) {
+      return "N/A";
+    }
+  }
+
+  function formatDisplayDate(ymd) {
+      if (!ymd) return "N/A";
+      const [y, m, d] = ymd.split('-');
+      return `${d}/${m}/${y}`;
+  }
+
+  function deleteLog(logId) {
+    if (!confirm("Bạn có chắc chắn muốn xóa bản ghi chấm công này?")) return;
+    const allLogs = getData();
+    const updatedLogs = allLogs.filter(log => log.id !== logId);
+    saveData(updatedLogs);
+    render();
+  }
+
+  function editLog(logId) {
+    const allLogs = getData();
+    const logIndex = allLogs.findIndex(log => log.id === logId);
+    if (logIndex === -1) {
+      alert("Không tìm thấy bản ghi!");
+      return;
+    }
+    const log = allLogs[logIndex];
+
+    const newInTime = prompt("Nhập giờ vào (HH:mm):", log.inTime || "");
+    const newOutTime = prompt("Nhập giờ ra (HH:mm):", log.outTime || "");
+    const newStatus = prompt("Nhập trạng thái (VD: Đúng giờ, Đi muộn, Vắng mặt, Về sớm):", log.status || "");
+    const newNote = prompt("Nhập ghi chú:", log.note || "");
+
+    if (newInTime === null || newOutTime === null || newStatus === null || newNote === null) {
+      return; // User cancelled
+    }
+    
+    // Validate time format (simple HH:mm check)
+    const timeRegex = /^\d{2}:\d{2}$/;
+    if (!timeRegex.test(newInTime) || !timeRegex.test(newOutTime)) {
+        alert("Định dạng giờ không hợp lệ. Vui lòng nhập theo định dạng HH:mm.");
+        return;
+    }
+
+    allLogs[logIndex] = {
+      ...log,
+      inTime: newInTime,
+      outTime: newOutTime,
+      status: newStatus,
+      note: newNote
+    };
+
+    saveData(allLogs);
+    render();
+  }
+  
+  // Expose functions to the global scope so inline onclick handlers can find them
+  window.deleteLog = deleteLog;
+  window.editLog = editLog;
+
+  function render(){
+    const q = (searchInput.value||"").trim().toLowerCase();
+    const st = statusFilter.value;
+    const chosenDate = dateInput.value;
+
+    const allLogs = getData();
+    const logsForDate = allLogs.filter(r => r.date === chosenDate);
+
+    document.getElementById("kpiTotal").textContent = logsForDate.length;
+    document.getElementById("kpiOnTime").textContent = logsForDate.filter(x=>x.status==="Đúng giờ").length;
+    document.getElementById("kpiLate").textContent = logsForDate.filter(x=>x.status==="Đi muộn").length;
+    document.getElementById("kpiAbsent").textContent = logsForDate.filter(x=>x.status==="Vắng mặt").length;
+
+    const filtered = logsForDate.filter(r=>{
+      const hay = `${r.staffCode || ''} ${r.staffName || ''}`.toLowerCase();
+      if(q && !hay.includes(q)) return false;
+      if(st !== "all" && r.status !== st) return false;
+      return true;
+    });
+
+    tbody.innerHTML = filtered.map(r => {
+      const totalHours = calculateTotalHours(r.inTime, r.outTime);
+      const displayDate = formatDisplayDate(r.date);
+      const code = r.staffCode || "N/A";
+      const name = r.staffName || "N/A";
+      const dept = r.dept || "Pha chế";
+      const inTime = r.inTime || "N/A";
+      const outTime = r.outTime || "N/A";
+      const note = r.note || "—";
+      const status = r.status || "N/A";
+
+      return `
+      <tr>
+        <td>${code}</td>
+        <td>${name}</td>
+        <td>${dept}</td>
+        <td class="att-cell-muted"><i class="fa-regular fa-calendar"></i> ${displayDate}</td>
+        <td class="att-cell-muted"><i class="fa-regular fa-clock"></i> ${inTime}</td>
+        <td class="att-cell-muted"><i class="fa-regular fa-clock"></i> ${outTime}</td>
+        <td>${totalHours}</td>
+        <td>${chip(status)}</td>
+        <td class="att-cell-muted">${note}</td>
+        <td>
+          <div class="att-actions">
+            <button class="att-ico-btn edit" title="Sửa" onclick="editLog('${r.id}')"><i class="fa-regular fa-pen-to-square"></i></button>
+            <button class="att-ico-btn del" title="Xóa" onclick="deleteLog('${r.id}')"><i class="fa-regular fa-trash-can"></i></button>
+          </div>
+        </td>
+      </tr>
+    `}).join("");
+  }
+
+  searchInput.addEventListener("input", render);
+  dateInput.addEventListener("change", render);
+  statusFilter.addEventListener("change", render);
+  
+  window.addEventListener("storage", (e) => {
+    if (e.key === KEY) {
+      render();
+    }
+  });
+
+  render();
+})();
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const adminLogoutBtn = document.getElementById("adminLogoutBtn");
+  if (adminLogoutBtn) {
+    adminLogoutBtn.addEventListener("click", function(event) {
+      event.preventDefault(); // Prevent default link behavior if it was a link
+
+      // Clear relevant localStorage items for logout
+      localStorage.removeItem("isLogin");
+      localStorage.removeItem("role");
+      localStorage.removeItem("currentUser");
+      localStorage.removeItem("redirectAfterLogin"); // If used for admin too
+
+      // Redirect to index.html
+      window.location.href = "index.html";
+    });
+  }
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const animatedItems = document.querySelectorAll("#page-dashboard .anim-on-scroll");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target); // Optional: stop observing once it's visible
+        }
+      });
+    }, {
+      threshold: 0.1 // Trigger when 10% of the item is visible
+    });
+
+    animatedItems.forEach(item => {
+      observer.observe(item);
+    });
+  } else {
+    // Fallback for older browsers
+    animatedItems.forEach(item => {
+      item.classList.add("is-visible");
+    });
+  }
+});
+</script>
+
+</body>
+</html>
+

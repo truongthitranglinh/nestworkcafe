@@ -1,0 +1,884 @@
+<script>
+(function(){
+  const isLogin = localStorage.getItem("isLogin")==="true";
+  const role = localStorage.getItem("role");
+  if(!isLogin || role!=="staff"){
+    alert("Bạn không có quyền truy cập trang nhân viên!");
+    window.location.href = "login.html";
+  }
+})();
+</script>
+
+<script>
+(function(){
+  const isLogin = localStorage.getItem("isLogin") === "true";
+  const role = localStorage.getItem("role");
+
+  if(!isLogin || role !== "staff"){
+    window.location.href = "index.html";
+  }
+})();
+</script>
+
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NestWork - Quản lý đặt bàn</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="staff.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+body{background:#fbfaef;color:#111;}
+.container{max-width:1100px;margin:0 auto;padding:18px;}
+
+.topbar{background:#4b3f3f;color:#fff;padding:14px 0;box-shadow:0 6px 18px rgba(0,0,0,.12);}
+.topbar__inner{max-width:1200px;margin:0 auto;padding:0 18px;}
+.topbar__row{display:flex;justify-content:space-between;align-items:center;}
+
+.brand{display:flex;gap:12px;align-items:center;}
+.brand img{width:40px;height:40px;border-radius:50%;object-fit:cover;}
+.brand__title{font-weight:800;}
+.brand__sub{font-size:12px;opacity:.9;}
+
+.top-actions{display:flex;gap:12px;align-items:center;}
+.icon-btn{width:42px;height:42px;border-radius:50%;border:0;background:#fff;cursor:pointer;position:relative;}
+.icon-btn .dot{position:absolute;top:9px;right:9px;width:8px;height:8px;background:red;border-radius:50%;}
+.staff-avatar{width:42px;height:42px;border-radius:50%;overflow:hidden;}
+.staff-avatar img{width:100%;height:100%;object-fit:cover;}
+
+.panel{background:#fff;border-radius:16px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.06);margin-top:14px;}
+
+.filters__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.field label{font-size:12px;font-weight:700;display:block;margin-bottom:6px;}
+.field select{width:100%;height:40px;border-radius:10px;border:1px solid #ddd;padding:0 10px;background:#f7f7f7;}
+
+.tabs{display:flex;gap:10px;margin:14px 0;}
+.tab{border:1px solid #ddd;background:#fff;border-radius:999px;padding:10px 14px;font-weight:700;cursor:pointer;}
+.tab.active{background:#7b7b3b;color:#fff;border-color:#7b7b3b;}
+
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+
+.order-card{background:#fff;border-radius:14px;padding:16px;border:1px solid #eee;box-shadow:0 8px 16px rgba(0,0,0,.06);}
+.order-name{font-size:18px;font-weight:800;display:flex;gap:10px;align-items:center;}
+
+.badge{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;}
+.badge.pending{background:#fff7d6;color:#8a6a00;border:1px solid #f0d78a;}
+.badge.done{background:#e9f9ee;color:#0f7a3a;border:1px solid #b9e7c8;}
+.badge.cancel{background:#ffe8e8;color:#b42318;border:1px solid #f3b0b0;}
+
+.order-meta{margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:14px;color:#374151;}
+
+.note{margin-top:10px;font-size:13px;font-style:italic;color:#6b7280;}
+
+.order-actions{display:flex;gap:10px;margin-top:14px;}
+.btn{padding:10px 14px;border-radius:10px;border:1px solid #ddd;background:#fff;font-weight:700;cursor:pointer;}
+.btn-ok{background:#7b7b3b;border-color:#7b7b3b;color:#fff;}
+.btn-warn{border-color:#9ca3af;}
+.btn-cancel{border-color:#ef4444;color:#ef4444;}
+
+.empty{text-align:center;padding:40px;color:#666;}
+
+@media(max-width:900px){
+  .cards-grid{grid-template-columns:1fr;}
+  .filters__grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="topbar__row">
+      <div class="brand">
+        <img src="img/logo.jpg">
+        <div>
+          <div class="brand__title">NestWork - Quản lý đặt bàn</div>
+          <div class="brand__sub">Giao diện nhân viên</div>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <!-- chuông -->
+        <button class="icon-btn" type="button" aria-label="Thông báo">
+          <i class="fa-regular fa-bell"></i>
+          <span class="dot" aria-hidden="true"></span>
+        </button>
+
+        <!-- avatar + dropdown -->
+        <div class="profile-dropdown">
+          <div class="staff-avatar" title="Tài khoản">
+            <img src="https://i.pinimg.com/736x/b8/89/78/b88978738e38abb5014ce80380ec89e6.jpg" alt="avatar">
+          </div>
+
+          <!-- menu PHẢI nằm trong profile-dropdown -->
+          <div class="dropdown-menu">
+            <a class="dropdown-head" href="pro5NV.html">
+              Tài khoản của tôi
+            </a>
+
+            <a class="dropdown-item danger" href="#" id="staffLogout">
+              Đăng xuất
+            </a>
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="panel filters">
+  <div class="filters__grid">
+    <div class="field">
+      <label>Ngày</label>
+      <select id="filterDate">
+        <option value="today">Hôm nay</option>
+        <option value="week">Tuần này</option>
+        <option value="month">Tháng này</option>
+        <option value="year">Năm nay</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Khung giờ</label>
+        <select id="filterTime">
+          <option value="all">Tất cả</option>
+          <option value="morning">Sáng</option>
+          <option value="noon">Trưa</option>
+          <option value="afternoon">Chiều</option>
+        </select>
+    </div>
+
+    <div class="field">
+      <label>Khu vực</label>
+        <select id="filterArea">
+          <option value="all">Tất cả khu vực</option>
+          <option value="desk">Bàn học đơn</option>
+          <option value="computer">Phòng máy</option>
+          <option value="small-room">Phòng học nhỏ</option>
+          <option value="large-room">Phòng họp lớn</option>
+        </select>
+    </div>
+
+  </div>
+</section>
+
+
+<nav class="tabs">
+  <button class="tab active" data-tab="list">Danh sách đặt bàn</button>
+  <button class="tab" data-tab="map">Sơ đồ bàn</button>
+  <button class="tab" data-tab="time">Chấm công</button>
+</nav>
+
+<section class="panel content">
+
+  <!-- TAB 1: Danh sách -->
+  <div class="tabpage show" id="tab-list">
+    <div class="cards-grid" id="staffOrders"></div>
+  </div>
+
+  <!-- TAB 2: Sơ đồ bàn -->
+    <!-- TAB 2: Sơ đồ bàn -->
+  <div class="tabpage" id="tab-map">
+    <div class="map-header">
+      <div class="map-filter">
+        <label for="mapArea">Khu vực:</label>
+        <select id="mapArea">
+          <option value="all">Tất cả</option>
+          <option value="vanphong">Bàn học đơn</option>
+          <option value="bantron">Phòng máy</option>
+          <option value="booth">Phòng học nhỏ</option>
+          <option value="phonghop">Phòng họp lớn</option>
+        </select>
+      </div>
+
+      <div class="legend">
+        <span class="lg"><i class="dot green"></i> Trống</span>
+        <span class="lg"><i class="dot red"></i> Đang dùng</span>
+        <span class="lg"><i class="dot yellow"></i> Đã đặt</span>
+      </div>
+    </div>
+
+    <div class="map-body">
+      <div class="map-board" id="mapBoard"></div>
+
+      <aside class="map-detail" id="mapDetail">
+        <div class="detail-empty">Chọn một bàn để xem chi tiết</div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- TAB 3: Chấm công -->
+  <div class="tabpage" id="tab-time">
+    <div class="att-grid">
+      <!-- LEFT: camera -->
+      <div class="att-card">
+        <div class="att-head">
+          <div class="att-title">
+            <i class="fa-regular fa-camera"></i>
+            <span>Quét nhận dạng khuôn mặt</span>
+          </div>
+        </div>
+
+        <div class="att-camera">
+          <video id="attVideo" autoplay playsinline muted></video>
+
+          <div class="att-overlay" id="attOverlay">
+            <div class="att-frame"></div>
+            <div class="att-status" id="attStatus">Camera chưa kích hoạt</div>
+          </div>
+
+          <div class="att-success" id="attSuccess" style="display:none;">
+            <div class="check">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <div class="ok-title">Nhận diện thành công!</div>
+            <div class="ok-name" id="okName">-</div>
+            <div class="ok-code" id="okCode">Mã NV: -</div>
+          </div>
+        </div>
+
+        <button class="att-btn" id="attBtn">
+          <i class="fa-regular fa-circle-play"></i>
+          <span>Bắt đầu quét</span>
+        </button>
+
+        <div class="att-divider"></div>
+
+        <div class="att-mode">
+          <button class="mode-btn active" id="modeIn" type="button">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            <span>Vào ca</span>
+          </button>
+
+          <button class="mode-btn" id="modeOut" type="button">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Kết ca</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: history -->
+      <div class="att-card">
+        <div class="att-head">
+          <div class="att-title">
+            <i class="fa-regular fa-user"></i>
+            <span>Lịch sử chấm công hôm nay</span>
+          </div>
+        </div>
+
+        <div class="att-list" id="attList"></div>
+      </div>
+    </div>
+
+    <div class="att-note">
+      <b>Lưu ý:</b> Chức năng nhận dạng khuôn mặt sử dụng camera trình duyệt. Vui lòng đảm bảo khuôn mặt đủ sáng và nhìn thẳng vào camera.
+    </div>
+  </div>
+
+</section>
+
+
+</main>
+
+<script>
+function getOrders(){
+  try{ return JSON.parse(localStorage.getItem("orders")||"[]"); }
+  catch(e){ return []; }
+}
+function saveOrders(a){ localStorage.setItem("orders",JSON.stringify(a)); }
+
+function renderStaffOrders(){
+  const box = document.getElementById("staffOrders");
+  const orders = getOrders();
+
+  if(orders.length===0){
+    box.innerHTML = '<div class="empty">Chưa có đơn nào</div>';
+    return;
+  }
+
+  box.innerHTML = orders.map(o=>{
+    const st = o.status || "Chờ duyệt";
+    let badge = "pending";
+    if(st==="Đã duyệt") badge="done";
+    if(st==="Đã hủy") badge="cancel";
+
+    return `
+    <div class="order-card" data-id="${o.id}">
+      <div class="order-name">
+        ${o.name||"Khách"}
+        <span class="badge ${badge}">${st}</span>
+      </div>
+
+      <div class="order-meta">
+        <div>📞 ${o.phone||"-"}</div>
+        <div>⏰ ${o.time||"-"}</div>
+        <div>👥 ${o.people||"-"} người</div>
+        <div>📍 ${o.area||"-"} - ${o.table||"-"}</div>
+      </div>
+
+      ${o.note?`<div class="note">Ghi chú: ${o.note}</div>`:""}
+
+      <div class="order-actions">
+        <button class="btn btn-ok" onclick="approve(${o.id})">✔ Xác nhận</button>
+        <button class="btn btn-warn" onclick="noshow(${o.id})">⚠ Không tới</button>
+        <button class="btn btn-cancel" onclick="removeOrder(${o.id})">✖ Hủy</button>
+      </div>
+    </div>
+    `;
+  }).join("");
+}
+
+function approve(id){
+  const o = getOrders(); const x = o.find(i=>i.id==id);
+  if(!x) return;
+  x.status="Đã duyệt";
+  saveOrders(o); renderStaffOrders();
+}
+function noshow(id){
+  const o = getOrders(); const x = o.find(i=>i.id==id);
+  if(!x) return;
+  x.status="Đã hủy";
+  saveOrders(o); renderStaffOrders();
+}
+function removeOrder(id){
+  if(!confirm("Huỷ đơn?")) return;
+  let o = getOrders().filter(i=>i.id!=id);
+  saveOrders(o); renderStaffOrders();
+}
+
+renderStaffOrders();
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutBtn = document.getElementById("staffLogout");
+  if(!logoutBtn) return;
+
+  logoutBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // ✅ Xoá đúng trạng thái đăng nhập
+    localStorage.removeItem("isLogin");
+    localStorage.removeItem("role");
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("redirectAfterLogin");
+
+    // 👉 về trang menu có nút đăng nhập/đăng ký
+    window.location.href = "index.html";
+  });
+});
+</script>
+
+
+<script>
+/* ========= TAB SWITCH ========= */
+document.querySelectorAll(".tab").forEach(btn=>{
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const key = btn.dataset.tab; // list | map | time
+    document.querySelectorAll(".tabpage").forEach(p=>p.classList.remove("show"));
+    document.getElementById("tab-" + key)?.classList.add("show");
+  });
+});
+
+const DEFAULT_TABLES = [
+  /* ===== PHÒNG LỚN ===== */
+  {
+    id: "phonghop",
+    name: "Phòng họp lớn",
+    area: "phonghop",
+    capacity: 12,
+    shape: "rect",
+    status: "empty",
+    c: 1, r: 1, w: 4, h: 4
+  },
+
+  /* ===== 3 PHÒNG MÁY ===== */
+  {
+    id: "pm1",
+    name: "Phòng máy 1",
+    area: "phongmay",
+    capacity: 2,
+    shape: "rect",
+    status: "using",
+    c: 5, r: 1, w: 2, h: 1
+  },
+  {
+    id: "pm2",
+    name: "Phòng máy 2",
+    area: "phongmay",
+    capacity: 2,
+    shape: "rect",
+    status: "empty",
+    c: 7, r: 1, w: 2, h: 1
+  },
+  {
+    id: "pm3",
+    name: "Phòng máy 3",
+    area: "phongmay",
+    capacity: 2,
+    shape: "rect",
+    status: "booked",
+    c: 9, r: 1, w: 2, h: 1
+  },
+
+  /* ===== 2 PHÒNG HỌC NHÓM (NHỎ) ===== */
+  {
+    id: "nhom1",
+    name: "Phòng học nhỏ 1",
+    area: "nhom",
+    capacity: 4,
+    shape: "rect",
+    status: "empty",
+    c: 11, r: 1, w: 2, h: 2
+  },
+  {
+    id: "nhom2",
+    name: "Phòng học nhỏ 2",
+    area: "nhom",
+    capacity: 4,
+    shape: "rect",
+    status: "using",
+    c: 11, r: 3, w: 2, h: 2
+  },
+
+  /* ===== 16 BÀN HỌC ĐƠN ===== */
+  // Hàng 1
+  { id:"d1",  name:"Bàn đơn 1",  area:"don", capacity:1, shape:"rect", status:"empty",  c:5, r:2, w:1, h:1 },
+  { id:"d2",  name:"Bàn đơn 2",  area:"don", capacity:1, shape:"rect", status:"using",  c:6, r:2, w:1, h:1 },
+  { id:"d3",  name:"Bàn đơn 3",  area:"don", capacity:1, shape:"rect", status:"booked",c:7, r:2, w:1, h:1 },
+  { id:"d4",  name:"Bàn đơn 4",  area:"don", capacity:1, shape:"rect", status:"empty",  c:8, r:2, w:1, h:1 },
+
+  // Hàng 2
+  { id:"d5",  name:"Bàn đơn 5",  area:"don", capacity:1, shape:"rect", status:"empty",  c:5, r:3, w:1, h:1 },
+  { id:"d6",  name:"Bàn đơn 6",  area:"don", capacity:1, shape:"rect", status:"using",  c:6, r:3, w:1, h:1 },
+  { id:"d7",  name:"Bàn đơn 7",  area:"don", capacity:1, shape:"rect", status:"empty",  c:7, r:3, w:1, h:1 },
+  { id:"d8",  name:"Bàn đơn 8",  area:"don", capacity:1, shape:"rect", status:"booked",c:8, r:3, w:1, h:1 },
+
+  // Hàng 3
+  { id:"d9",  name:"Bàn đơn 9",  area:"don", capacity:1, shape:"rect", status:"empty",  c:5, r:4, w:1, h:1 },
+  { id:"d10", name:"Bàn đơn 10", area:"don", capacity:1, shape:"rect", status:"empty",  c:6, r:4, w:1, h:1 },
+  { id:"d11", name:"Bàn đơn 11", area:"don", capacity:1, shape:"rect", status:"using",  c:7, r:4, w:1, h:1 },
+  { id:"d12", name:"Bàn đơn 12", area:"don", capacity:1, shape:"rect", status:"empty",  c:8, r:4, w:1, h:1 },
+
+  // Hàng 4
+  { id:"d13", name:"Bàn đơn 13", area:"don", capacity:1, shape:"rect", status:"booked",c:5, r:5, w:1, h:1 },
+  { id:"d14", name:"Bàn đơn 14", area:"don", capacity:1, shape:"rect", status:"empty",  c:6, r:5, w:1, h:1 },
+  { id:"d15", name:"Bàn đơn 15", area:"don", capacity:1, shape:"rect", status:"empty",  c:7, r:5, w:1, h:1 },
+  { id:"d16", name:"Bàn đơn 16", area:"don", capacity:1, shape:"rect", status:"empty",  c:8, r:5, w:1, h:1 },
+];
+
+
+function loadTables(){
+  try{
+    const raw = localStorage.getItem("tables");
+    if(!raw) return DEFAULT_TABLES;
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) && arr.length ? arr : DEFAULT_TABLES;
+  }catch(e){
+    return DEFAULT_TABLES;
+  }
+}
+function saveTables(arr){
+  localStorage.setItem("tables", JSON.stringify(arr));
+}
+
+let tables = loadTables();
+let selectedId = null;
+
+const mapBoard = document.getElementById("mapBoard");
+const mapDetail = document.getElementById("mapDetail");
+const mapArea = document.getElementById("mapArea");
+
+function statusLabel(st){
+  if(st==="empty") return "Trống";
+  if(st==="using") return "Đang dùng";
+  return "Đã đặt";
+}
+
+function renderMap(){
+  const area = mapArea?.value || "all";
+  const list = area==="all" ? tables : tables.filter(t=>t.area===area);
+
+  mapBoard.innerHTML = `
+    <div class="map-grid">
+      ${list.map(t=>{
+        const cls = `table-item ${t.status} ${t.shape==="round"?"round":""} ${t.id===selectedId?"selected":""}`;
+        const r  = t.r || 1;
+        const c  = t.c || 1;
+        const rs = t.h || 1;  // span theo chiều dọc
+        const cs = t.w || 1;  // span theo chiều ngang
+
+
+        return `
+          <div class="${cls}" data-id="${t.id}"
+               style="grid-row:${r} / span ${rs}; grid-column:${c} / span ${cs};">
+            ${t.name}
+            <div class="cap">👥 <span>${t.capacity}</span></div>
+          </div>
+        `;
+      }).join("")}
+    </div>
+  `;
+
+  mapBoard.querySelectorAll(".table-item").forEach(el=>{
+    el.addEventListener("click", ()=>{
+      selectedId = el.dataset.id;
+      renderMap();
+      renderDetail(selectedId);
+    });
+  });
+}
+
+function renderDetail(id){
+  const t = tables.find(x=>x.id===id);
+  if(!t){
+    mapDetail.innerHTML = `<div class="detail-empty">Chọn một bàn để xem chi tiết</div>`;
+    return;
+  }
+
+  mapDetail.innerHTML = `
+    <div class="detail-title">${t.name}</div>
+
+    <div class="detail-row">
+      <span>Trạng thái:</span>
+      <span class="pill ${t.status}">${statusLabel(t.status)}</span>
+    </div>
+
+    <div class="detail-row">
+      <span>Sức chứa:</span>
+      <span>👥 <b>${t.capacity} người</b></span>
+    </div>
+
+    <div class="detail-row">
+      <span>Khu vực:</span>
+      <span><b>${t.area}</b></span>
+    </div>
+
+    <div class="detail-actions">
+      <button class="btn btn-ok" id="btnBook">${t.status==="booked" ? "Đã đặt" : "Đặt bàn"}</button>
+      <button class="btn btn-warn" id="btnEmpty">Giải phóng</button>
+      <button class="btn" id="btnUsing">Đang dùng</button>
+    </div>
+  `;
+
+  const btnBook = document.getElementById("btnBook");
+  const btnEmpty = document.getElementById("btnEmpty");
+  const btnUsing = document.getElementById("btnUsing");
+
+  btnBook.disabled = (t.status === "booked");
+  btnBook.addEventListener("click", ()=>{
+    tables = tables.map(x => x.id===t.id ? ({...x, status:"booked"}) : x);
+    saveTables(tables);
+    renderMap();
+    renderDetail(t.id);
+  });
+
+  btnEmpty.addEventListener("click", ()=>{
+    tables = tables.map(x => x.id===t.id ? ({...x, status:"empty"}) : x);
+    saveTables(tables);
+    renderMap();
+    renderDetail(t.id);
+  });
+
+  btnUsing.addEventListener("click", ()=>{
+    tables = tables.map(x => x.id===t.id ? ({...x, status:"using"}) : x);
+    saveTables(tables);
+    renderMap();
+    renderDetail(t.id);
+  });
+}
+
+mapArea?.addEventListener("change", ()=>{
+  selectedId = null;
+  renderMap();
+  mapDetail.innerHTML = `<div class="detail-empty">Chọn một bàn để xem chi tiết</div>`;
+});
+
+renderMap();
+</script>
+
+<script>
+(() => {
+  const video = document.getElementById("attVideo");
+  const btn = document.getElementById("attBtn");
+  const statusEl = document.getElementById("attStatus");
+  const overlay = document.getElementById("attOverlay");
+  const success = document.getElementById("attSuccess");
+  const okName = document.getElementById("okName");
+  const okCode = document.getElementById("okCode");
+  const listEl = document.getElementById("attList");
+
+  if (!video || !btn) return;
+
+    // ===== MODE (Vào ca / Kết ca) =====
+  const modeInBtn = document.getElementById("modeIn");
+  const modeOutBtn = document.getElementById("modeOut");
+
+  let attMode = "in"; // "in" | "out"
+
+  function setMode(m){
+    attMode = m;
+    modeInBtn?.classList.toggle("active", m === "in");
+    modeOutBtn?.classList.toggle("active", m === "out");
+  }
+
+  modeInBtn?.addEventListener("click", () => setMode("in"));
+  modeOutBtn?.addEventListener("click", () => setMode("out"));
+
+
+  let stream = null;
+  let scanning = false;
+  let demoTimer = null;
+
+function getCurrentStaff(){
+  // 1) ưu tiên currentStaff nếu m có lưu
+  const raw = localStorage.getItem("currentStaff");
+  if(raw){
+    try { return JSON.parse(raw); } catch(e){}
+  }
+
+  // 2) fallback theo email đăng nhập -> map ra tên + mã
+  const email = (localStorage.getItem("currentUser") || "").toLowerCase();
+  if(!email) return null;
+
+  const STAFF_MAP = {
+    "staff@nestwork.com": { name: "Trang Linh", code: "NV001" },
+  };
+
+  return STAFF_MAP[email] || { name: email.split("@")[0], code: email };
+}
+
+
+const STAFF = getCurrentStaff();
+if(!STAFF){
+  alert("Không tìm thấy thông tin nhân viên. Hãy đăng nhập lại!");
+  location.href = "login.html";
+}
+
+
+  const ATT_KEY = "attendanceLogs";
+
+function getAtt(){
+  try { return JSON.parse(localStorage.getItem(ATT_KEY) || "[]"); }
+  catch(e){ return []; }
+}
+function saveAtt(arr){
+  localStorage.setItem(ATT_KEY, JSON.stringify(arr));
+}
+
+function hhmm(d){
+  const h = String(d.getHours()).padStart(2,"0");
+  const m = String(d.getMinutes()).padStart(2,"0");
+  return `${h}:${m}`;
+}
+
+// đúng giờ nếu <= 08:05
+function isLateByRule(dateObj){
+  const h = dateObj.getHours(), m = dateObj.getMinutes();
+  return (h > 8) || (h === 8 && m > 5);
+}
+
+function addAttendanceLog({ staffCode, type }) {
+    const now = new Date();
+    const date = now.toISOString().slice(0, 10); // yyyy-mm-dd
+    const arr = getAtt();
+    const staffName = STAFF.name;
+
+    if (type === "out") {
+        // Find the last "in" log for this staff member today that hasn't been clocked out yet
+        const logIndex = arr.findIndex(log =>
+            log.staffCode === staffCode &&
+            log.date === date &&
+            log.type === "in" && // Ensure it was a clock-in entry
+            !log.outTime         // And it hasn't been clocked out yet
+        );
+
+        if (logIndex > -1) {
+            arr[logIndex].outTime = hhmm(now);
+            arr[logIndex].type = "in-out"; // Mark as completed for the day
+            saveAtt(arr);
+            return arr[logIndex];
+        } else {
+            alert("Bạn chưa chấm công vào ca hoặc đã kết ca rồi!");
+            return null;
+        }
+    } else { // type === "in"
+        // Check if already clocked in today without clocking out
+        const hasOpenClockIn = arr.some(log =>
+            log.staffCode === staffCode &&
+            log.date === date &&
+            log.type === "in" &&
+            !log.outTime
+        );
+
+        if(hasOpenClockIn) {
+            alert("Bạn đã chấm công vào ca hôm nay rồi!");
+            return null;
+        }
+
+        const log = {
+            id: "AT-" + Date.now() + "-" + Math.floor(Math.random() * 1000),
+            staffName,
+            staffCode,
+            type: "in",
+            inTime: hhmm(now),
+            outTime: "",
+            date,
+            createdAt: now.getTime(),
+            status: isLateByRule(now) ? "Đi muộn" : "Đúng giờ"
+        };
+
+        arr.push(log);
+        saveAtt(arr);
+        return log;
+    }
+}
+
+function pad2(n) { return String(n).padStart(2, "0"); }
+function nowStr(d = new Date()) {
+    return `${pad2(d.getDate())}/${pad2(d.getMonth() + 1)}/${d.getFullYear()}`;
+}
+
+
+function setBtnScanning(on) {
+    btn.innerHTML = on
+        ? `<i class="fa-regular fa-circle-stop"></i><span>Dừng quét</span>`
+        : `<i class="fa-regular fa-circle-play"></i><span>Bắt đầu quét</span>`;
+    btn.classList.toggle("stop", on);
+}
+
+function renderHistory(logs) {
+    listEl.innerHTML = logs.map(log => {
+        const badgeClass = log.status === "Đi muộn" ? "late" : "ok";
+        const isDone = log.outTime;
+        return `
+      <div class="att-item" data-id="${log.id}">
+        <div class="att-item-top">
+          <div class="att-name">${log.staffName}</div>
+          <span class="att-badge ${isDone ? 'done' : badgeClass}">${isDone ? 'Đã kết thúc' : log.status}</span>
+        </div>
+        <div class="att-sub">Mã NV: ${log.staffCode}</div>
+        <div class="att-meta">
+          <span><i class="fa-regular fa-calendar"></i> ${nowStr(new Date(log.createdAt))}</span>
+          <span><i class="fa-regular fa-clock" style="color:#22c55e"></i> Vào: ${log.inTime}</span>
+          ${log.outTime ? `<span><i class="fa-regular fa-clock" style="color:#ef4444"></i> Ra: ${log.outTime}</span>` : ''}
+        </div>
+      </div>
+    `;
+    }).join("");
+}
+
+function refreshTodayHistory(){
+    const today = new Date().toISOString().slice(0, 10);
+    const allLogs = getAtt();
+    const todayLogs = allLogs.filter(log => log.date === today && log.staffCode === STAFF.code);
+    renderHistory(todayLogs);
+}
+
+
+function stopCamera() {
+    if (stream) {
+        stream.getTracks().forEach(t => t.stop());
+        stream = null;
+    }
+    video.srcObject = null;
+}
+
+async function startCamera() {
+    stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: "user" },
+        audio: false
+    });
+    video.srcObject = stream;
+}
+
+function startScanUI() {
+    scanning = true;
+    setBtnScanning(true);
+    success.style.display = "none";
+    overlay.style.display = "block";
+    statusEl.textContent = "Đang quét khuôn mặt...";
+}
+
+function stopScanUI() {
+    scanning = false;
+    setBtnScanning(false);
+    statusEl.textContent = "Camera chưa kích hoạt";
+    overlay.style.display = "block";
+    success.style.display = "none";
+}
+
+function demoRecognize() {
+    clearTimeout(demoTimer);
+
+    demoTimer = setTimeout(() => {
+        const pick = { name: STAFF.name, code: STAFF.code };
+
+        overlay.style.display = "none";
+        success.style.display = "grid";
+        okName.textContent = pick.name;
+        okCode.textContent = `Mã NV: ${pick.code}`;
+
+        const log = addAttendanceLog({ staffCode: pick.code, type: attMode });
+        
+        if (log) {
+           refreshTodayHistory();
+        }
+
+        // DỪNG sau 1 lần
+        scanning = false;
+        setBtnScanning(false);
+        clearTimeout(demoTimer);
+        stopCamera();
+        statusEl.textContent = "Camera chưa kích hoạt";
+    }, 2200);
+}
+
+
+
+  btn.addEventListener("click", async () => {
+    try{
+      if (!scanning){
+        // start
+        await startCamera();
+        startScanUI();
+        demoRecognize();
+      } else {
+        // stop
+        clearTimeout(demoTimer);
+        stopCamera();
+        stopScanUI();
+      }
+    }catch(err){
+      stopCamera();
+      stopScanUI();
+      alert("Không bật được camera. Hãy cấp quyền camera cho trình duyệt nhé!");
+      console.error(err);
+    }
+  });
+
+  refreshTodayHistory();
+})();
+
+
+
+</script>
+
+</body>
+</html>

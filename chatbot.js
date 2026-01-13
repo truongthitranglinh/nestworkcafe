@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let timeRemaining = durationInSeconds;
         
         addMessage("Bắt đầu tính giờ học nhé!");
-        cancelBtn.style.display = 'none'; // Hide cancel button once timer starts
+        cancelBtn.style.display = 'block'; // Show cancel button once timer starts
         
         const timerMessage = document.createElement("li");
         timerMessage.classList.add("chat", "system");
@@ -164,7 +164,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             
             addMessage("Bạn đã học xong rồi sao, cảm ơn và hẹn gặp lại nha!");
-            cancelBtn.style.display = 'none'; // Hide the cancel button after cancellation
+            cancelBtn.style.display = 'none'; // Hide cancel button after cancellation
+            cancelBtn.textContent = "Kết thúc sớm"; // (tuỳ bạn)
+
         }
     };
 
@@ -212,18 +214,18 @@ document.addEventListener("DOMContentLoaded", () => {
             addMessage(`Phiên học của bạn đang diễn ra. Chúc bạn học tập hiệu quả!`);
             startTimer(activeSession.timeRemaining);
         } else if (nextUpcomingSession) {
-            const delay = nextUpcomingSession.startTime - now;
-            const startTimeFormatted = nextUpcomingSession.startTime.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
-            
-            addMessage(`Phiên học tiếp theo của bạn sẽ bắt đầu lúc ${startTimeFormatted}.`);
-            
-            // Store the timeout ID and order ID for potential cancellation
-            sessionTimeoutId = setTimeout(() => {
-                startTimer(nextUpcomingSession.durationSeconds);
-            }, delay);
+                const delay = nextUpcomingSession.startTime - now;
+                addMessage(`Phiên học tiếp theo của bạn sẽ bắt đầu lúc ${nextUpcomingSession.startTime.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}.`);
 
-            cancelBtn.style.display = 'block'; // Show cancel button for upcoming session
-            cancelBtn.dataset.orderId = nextUpcomingSession.id;
+                sessionTimeoutId = setTimeout(() => {
+                    startTimer(nextUpcomingSession.durationSeconds);
+                }, delay);
+
+                // ✅ CHƯA BẮT ĐẦU → KHÔNG HIỆN NÚT
+                cancelBtn.style.display = 'none';
+                cancelBtn.dataset.orderId = nextUpcomingSession.id; // vẫn lưu id
+
+
         } else {
             addMessage("Xin chào! 👋<br>Hiện tại bạn không có phiên học nào được lên lịch hoặc đã duyệt. Tôi sẽ tự động bắt đầu khi đến giờ.");
         }
